@@ -1,3 +1,45 @@
 {
-  "start": "Get Started"
+  "start": "Get Started",
+  "-- Anime --": {
+    "type": "separator",
+    "title": "Anime"
+  },
+  "9anime": "9Anime",
+  "animefox": "AnimeFox",
+  "animepahe": "Animepahe",
+  "animixplay": "AniMixPlay",
+  "bilibili": "BiliBili",
+  "crunchyroll": "Crunchyroll",
+  "enime": "Enime",
+  "gogoanime": "Gogoanime",
+  "tenshi": "Tenshi",
+  "zoro": "Zoro",
+  "-- Books --": {
+    "type": "separator",
+    "title": "Books"
+  },
+  "-- Comics --": {
+    "type": "separator",
+    "title": "Comics"
+  },
+  "-- Light Novels --": {
+    "type": "separator",
+    "title": "Light Novels"
+  },
+  "-- Manga --": {
+    "type": "separator",
+    "title": "Manga"
+  },
+  "-- Meta --": {
+    "type": "separator",
+    "title": "Meta"
+  },
+  "-- Movies --": {
+    "type": "separator",
+    "title": "Movies"
+  },
+  "-- News --": {
+    "type": "separator",
+    "title": "News"
+  }
 }
