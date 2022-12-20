@@ -1,18 +1,18 @@
-import React from 'react'
-import { DocsThemeConfig } from 'nextra-theme-docs'
+import React from "react";
+import { DocsThemeConfig } from "nextra-theme-docs";
 
 const config: DocsThemeConfig = {
-  logo: <span>My Project</span>,
+  logo: <span>Consumet Documentation</span>,
   project: {
-    link: 'https://github.com/shuding/nextra-docs-template',
+    link: "https://github.com/consumet",
   },
   chat: {
-    link: 'https://discord.com',
+    link: "https://discord.gg/consumet",
   },
-  docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
+  docsRepositoryBase: "https://github.com/consumet/docs.consumet.org",
   footer: {
-    text: 'Nextra Docs Template',
+    text: "Copyright (c) Consumet | 2023-present",
   },
-}
+};
 
-export default config
+export default config;
