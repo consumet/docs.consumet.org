@@ -3,8 +3,14 @@
   "list-of-providers": "List of Providers",
   "rest-api": "API",
   "node-library": "Node Library",
+  "license": {
+    "title": "License 📜",
+    "type": "page",
+    "href": "https://raw.githubusercontent.com/consumet/consumet.ts/master/LICENSE",
+    "newWindow": true
+  },
   "contact": {
-    "title": "Contact ↗",
+    "title": "Contact ✉️",
     "type": "page",
     "href": "mailto:consumet.org@gmail.com",
     "newWindow": true

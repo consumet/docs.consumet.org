@@ -2,6 +2,10 @@ import React from "react";
 import { DocsThemeConfig } from "nextra-theme-docs";
 
 const config: DocsThemeConfig = {
+  gitTimestamp: false,
+  useNextSeoProps: () => {
+    return { titleTemplate: `%s - Consumet` };
+  },
   logo: <span>Consumet Documentation</span>,
   project: {
     link: "https://github.com/consumet",
