@@ -2,4 +2,106 @@
 title: GogoAnime | Anime Info
 ---
 
+import { Tab, Tabs } from "nextra-theme-docs";
+
 # Get Anime Info
+
+Technical details regarding the usage of the get anime info function for the GogoAnime provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/anime/gogoanime/info/{id}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                                                                                             | Required? | Default |
+| :-------: | :----: | ------------------------------------------------------------------------------------------------------- | :-------: | :-----: |
+|    id     | string | The GogoAnime ID of the anime; i.e. provided by searching for said anime and selecting the correct one. |    Yes    |         |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example ID of "spy-x-family".
+        const url = "https://api.consumet.org/anime/gogoanime/info/spy-x-family";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example ID of "spy-x-family".
+        url = "https://api.consumet.org/anime/gogoanime/info/spy-x-family"
+        response = requests.get(url)
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "id": "string",
+    "title": "string",
+    "url": "string",
+    "image": "string",
+    "releaseDate": "string", // or null
+    "description": "string", // or null
+    "genres": [
+      "string"
+    ],
+    "subOrDub": "sub",
+    "type": "string", // or null
+    "status": "Ongoing",
+    "otherName": "string", // or null
+    "totalEpisodes": 0,
+    "episodes": [
+      {
+        "id": "string",
+        "number": 0,
+        "url": "string"
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+</Tabs>
