@@ -1,5 +1,6 @@
 {
   "search": "Search",
   "get-movie-info": "Get Movie Info",
+  "get-movie-episode-available-servers": "Get Movie Episode Available Servers",
   "get-movie-episode-streaming-links": "Get Movie Episode Streaming Links"
 }
