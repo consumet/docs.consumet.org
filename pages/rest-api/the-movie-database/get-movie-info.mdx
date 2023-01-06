@@ -1,0 +1,113 @@
+---
+title: The Movie Database | Movie Info
+---
+
+import { Tab, Tabs } from 'nextra-theme-docs';
+
+# Movie Info
+
+Technical details regarding the usage of the get anime info function for the TMDB provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/meta/tmdb/info/{id}?type={media-type}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description         | Required? | Default |
+| :-------: | :----: | ------------------- | :-------: | :-----: |
+|    id     | string | The show / movie id |    Yes    |  `N/A`  |
+
+## Query Parameters
+
+| Parameter |  Type  | Description                                                                                                      | Required? | Default |
+| :-------: | :----: | ---------------------------------------------------------------------------------------------------------------- | :-------: | :-----: |
+|   type    | string | The TMDB media type of the show / movie; i.e. provided by searching for said show and selecting the correct one. |    Yes    |  `N/A`  |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example id of "60735" and the query of "tv"
+        const url = "https://api.consumet.org/meta/tmdb/info/60735";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { type: "tv" } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        // Using the example id of "60735" and the query of "tv"
+        url = "https://api.consumet.org/meta/tmdb/info/60735"
+        response = requests.get(url, params={"type": "tv"})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "404 Not Found"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+      "cover": "string",
+      "recommendations": "IMovieResult[]",
+      "genres": "string[]",
+      "description": "string",
+      "rating": "number",
+      "status": "MediaStatus",
+      "duration": "string",
+      "production": "string",
+      "casts": "string[]",
+      "tags": "string[]",
+      "totalEpisodes": "number",
+      "seasons": "{ season: number; image?: string; episodes: IMovieEpisode[] }[]",
+      "episodes": "IMovieEpisode[]",
+  }
+  ```
+  </Tab>
+
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  }
+  ```
+  </Tab>
+
+  <Tab>
+
+    **MIME Type:** `application/json`
+    ```json copy=false
+    {
+      "message": "string"
+    }
+    ```
+
+  </Tab>
+</Tabs>
