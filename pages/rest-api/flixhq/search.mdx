@@ -1,0 +1,92 @@
+---
+title: Flixhq | Search
+---
+
+import { Tab, Tabs } from 'nextra-theme-docs';
+
+# Search
+
+Technical details regarding the usage of the search function for the Flixhq provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/movies/flixhq/{query}?page={number}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                                                       | Required? | Default |
+| :-------: | :----: | ----------------------------------------------------------------- | :-------: | :-----: |
+|   query   | string | The search query; i.e. the title of the item you are looking for. |    Yes    |  `""`   |
+
+## Query Parameters
+
+| Parameter |  Type   | Description                           | Required? | Default |
+| :-------: | :-----: | ------------------------------------- | :-------: | :-----: |
+|   page    | integer | The page number of results to return. |    No     |   `1`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example query "flash", and looking at the 2nd page of results.
+        const url = "https://api.consumet.org/movies/flixhq/flash";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { page: 2 } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example query "flash", and looking at the 2nd page of results.
+        url = "https://api.consumet.org/movies/flixhq/flash"
+        response = requests.get(url, params={"page": 2})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+  "currentPage": 1,
+  "hasNextPage": true,
+  "results": [
+      {
+        "id": "string",
+        "url": "string",
+        "title": "string",
+        "image": "string",
+        "releaseDate": "string",
+        "type": "Movie"
+      }
+    ]
+  }
+  ```
+  </Tab>
+</Tabs>
