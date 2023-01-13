@@ -7,6 +7,7 @@
 - [x] Animepahe
 - [ ] BiliBili
 - [ ] Crunchyroll
+- [ ] kamyroll
 - [ ] Enime
 - [x] GogoAnime
 - [ ] Zoro
