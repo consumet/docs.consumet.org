@@ -1,5 +1,102 @@
 ---
-title: Animepahe | Streaming Links
+title: animepahe | Streaming Links
 ---
 
+import { Tab, Tabs } from "nextra-theme-docs";
+
 # Get Anime Episode Streaming Links
+
+Technical details regarding the usage of the get anime streaming links function for the animepahe provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/anime/animepahe/watch/{episodeId}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                                                       | Required? | Default |
+| :-------: | :----: | ----------------------------------------------------------------- | :-------: | :-----: |
+|   query   | string | The search query; i.e. the title of the item you are looking for. |    Yes    |  `""`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        /*
+        Using the example episode ID of '2242c5d8ac108a8b5d0ac16bf2db82d55d5a578b2ed2e4ca0c6ed1b5dccc3e95"',
+        */
+        const url = "https://api.consumet.org/anime/animepahe/watch/2242c5d8ac108a8b5d0ac16bf2db82d55d5a578b2ed2e4ca0c6ed1b5dccc3e95"";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        """
+        Using the example episode ID of '2242c5d8ac108a8b5d0ac16bf2db82d55d5a578b2ed2e4ca0c6ed1b5dccc3e95"'
+        """
+        url = "https://api.consumet.org/anime/animepahe/watch/2242c5d8ac108a8b5d0ac16bf2db82d55d5a578b2ed2e4ca0c6ed1b5dccc3e95""
+        response = requests.get(url)
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "headers": {
+        "Referer": "string",
+        "watchsb": "string", // or null, since only provided with server being equal to "streamsb".
+        "User-Agent": "string" // or null
+    },
+    "sources": [
+        {
+        "url": "string",
+        "quality": "string",
+        "isM3U8": true
+        }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+</Tabs>
