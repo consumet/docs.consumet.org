@@ -1,24 +1,24 @@
 ---
-title: ViewAsian | Movie Info
+title: Dramacool | Movie Info
 ---
 
 import { Tab, Tabs } from "nextra-theme-docs";
 
 # Movie Info
 
-Technical details regarding the usage of the get movie info function for the ViewAsian provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+Technical details regarding the usage of the get movie info function for the Dramacool provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
 
 ## Route Schema (URL)
 
 ```
-https://api.consumet.org/movies/ViewAsian/info?id={id}
+https://api.consumet.org/movies/Dramacool/info?id={id}
 ```
 
 ## Query Parameters
 
 | Parameter |  Type  | Description                                                                                                   | Required? | Default |
 | :-------: | :----: | ------------------------------------------------------------------------------------------------------------- | :-------: | :-----: |
-|    id     | string | The ViewAsian ID of the show / movie; i.e. provided by searching for said show and selecting the correct one. |    Yes    |         |
+|    id     | string | The Dramacool ID of the show / movie; i.e. provided by searching for said show and selecting the correct one. |    Yes    |         |
 
 ## Request Samples
 
@@ -29,7 +29,7 @@ https://api.consumet.org/movies/ViewAsian/info?id={id}
         import axios from "axios";
 
         // Using the example query "drama-detail/vincenzo", and looking at the 1st page of results.
-        const url = "https://api.consumet.org/movies/ViewAsian/info?id=drama-detail/vincenzo";
+        const url = "https://api.consumet.org/movies/Dramacool/info?id=drama-detail/vincenzo";
         const data = async () => {
             try {
                 const { data } = await axios.get(url);
@@ -50,7 +50,7 @@ https://api.consumet.org/movies/ViewAsian/info?id={id}
         import requests
 
         # Using the example query "drama-detail/vincenzo", and looking at the 1st page of results.
-        url = "https://api.consumet.org/movies/ViewAsian/info?id=drama-detail/vincenzo"
+        url = "https://api.consumet.org/movies/Dramacool/info?id=drama-detail/vincenzo"
         response = requests.get(url)
         data = response.json()
 

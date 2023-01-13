@@ -1,17 +1,17 @@
 ---
-title: ViewAsian | Search
+title: Dramacool | Search
 ---
 
 import { Tab, Tabs } from "nextra-theme-docs";
 
 # Search
 
-Technical details regarding the usage of the search function for the ViewAsian provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+Technical details regarding the usage of the search function for the Dramacool provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
 
 ## Route Schema (URL)
 
 ```
-https://api.consumet.org/movies/ViewAsian/{query}?page={number}
+https://api.consumet.org/movies/Dramacool/{query}?page={number}
 ```
 
 ## Path Parameters
@@ -35,7 +35,7 @@ https://api.consumet.org/movies/ViewAsian/{query}?page={number}
         import axios from "axios";
 
         // Using the example query "vincenzo", and looking at the 2nd page of results.
-        const url = "https://api.consumet.org/movies/ViewAsian/vincenzo";
+        const url = "https://api.consumet.org/movies/Dramacool/vincenzo";
         const data = async () => {
             try {
                 const { data } = await axios.get(url, { params: { page: 1 } });
@@ -56,7 +56,7 @@ https://api.consumet.org/movies/ViewAsian/{query}?page={number}
         import requests
 
         # Using the example query "vincenzo", and looking at the 2nd page of results.
-        url = "https://api.consumet.org/movies/ViewAsian/vincenzo"
+        url = "https://api.consumet.org/movies/Dramacool/vincenzo"
         response = requests.get(url, params={"page": 2})
         data = response.json()
 
