@@ -1,0 +1,114 @@
+---
+title: Dramacool | Streaming Links
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Anime Episode Streaming Links
+
+Technical details regarding the usage of the get anime streaming links function for the Dramacool provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/movies/Dramacool/watch?episodeId={episodeId}&mediaId={mediaId}&server={server}
+```
+
+## Query Parameters
+
+| Parameter |                            Type                             | Description                     | Required? |    Default    |
+| :-------: | :---------------------------------------------------------: | ------------------------------- | :-------: | :-----------: |
+| episodeId |                           string                            | The ID of the selected episode  |    Yes    |      N/A      |
+|  mediaId  |                           string                            | The movie info ID               |    Yes    |      N/A      |
+|  server   | Enum: `"asianload"` `"mixdrop"` `"streamtape"` `"streamsb"` | The server the episode will use |    No     | `"asianload"` |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        /*
+        Using the example episode ID of 'vincenzo-2021-episode-1',
+        explicitly defining default server for demostrative purposes.
+        */
+        const url = "https://api.consumet.org/movies/Dramacool/watch";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { episodeId: "vincenzo-2021-episode-1", mediaId: "drama-detail/vincenzo", server: "asianload" } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        """
+        Using the example episode ID of 'vincenzo-2021-episode-1',
+        explicitly defining default server for demostrative purposes.
+        """
+        url = "https://api.consumet.org/movies/Dramacool/watch"
+        response = requests.get(url, params={"episodeId": "vincenzo-2021-episode-1", "mediaId": "drama-detail/vincenzo", "server": "asianload"})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+      "headers": {
+          "Referer": "string"
+      },
+      "sources": [
+          {
+          "url": "string",
+          "quality": "string",
+          "isM3U8": true
+          }
+      ],
+      "subtitles": [
+          {
+          "url": "string",
+          "lang": "string"
+          }
+      ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  }   
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  } 
+  ```
+  </Tab>
+</Tabs>
