@@ -1,0 +1,164 @@
+---
+title: Get-Manga-Info
+---
+
+import { Tab, Tabs } from 'nextra-theme-docs';
+
+# Info
+
+Technical details regarding the usage of the get manga info function for the Anilist Manga provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/meta/anilist-manga/info/{id}?provider={provider}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description  | Required? | Default |
+| :-------: | :----: | ------------ | :-------: | :-----: |
+|    id     | string | The manga id |    Yes    |  `N/A`  |
+
+## Query Parameters
+
+| Parameter |  Type  | Description                                                                                                                         | Required? | Default |
+| :-------: | :----: | ----------------------------------------------------------------------------------------------------------------------------------- | :-------: | :-----: |
+| provider  | string | The provider you want to use. Enum: `mangadex`, `mangahere`, `mangakakalot`, `mangapark`, `mangapill`, `mangareader`, `mangasee123` |    Yes    |  `N/A`  |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example id of "30013" and the query of "mangareader"
+        const url = "https://api.consumet.org/meta/anilist-manga/info/30013";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { provider: "mangareader" } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        // Using the example id of "30013" and the query of "mangareader"
+        url = "https://api.consumet.org/meta/anilist-manga/info/30013"
+        response = requests.get(url, params={"provider": "mangareader"})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "404 Not Found"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+      "id": "string",
+      "title": "string[]",
+      "malId": "integer",
+      "trailer": {
+        "id": "string",
+        "site": "string",
+        "thumbnail": "string"
+      },
+      "image": "string",
+      "popularity": "number",
+      "color": "string",
+      "description": "string",
+      "status": "string",
+      "releaseDate": "integer",
+      "startDate": {
+        "year": "number",
+        "month": "number",
+        "day": "number"
+      },
+      "endDate": {
+         "year": "number",
+         "month": "number",
+         "day": "number"
+        },
+      "rating": "integer",
+      "genres": "string[]",
+      "season": "string",
+      "studios": "string[]",
+      "type": "string",
+      "recommendations": {
+        "id": "string",
+        "malId": "string",
+        "title": "string[]",
+        "status": "string",
+        "chapters": "number",
+        "image": "string",
+        "cover": "string",
+        "rating": "number",
+        "type": "string",
+      },
+      "characters": {
+        "id": "string",
+        "role": "string",
+        "name": "string[]",
+        "image": "string",
+      },
+      "relations": {
+        "id": "integer",
+        "relationType": "string",
+        "malId": "integer",
+        "title": "string[]",
+        "status": "string",
+        "chapters": "integer",
+        "image": "string",
+        "color": "string",
+        "type": "string",
+        "cover": "string",
+        "rating": "integer",
+      },
+      "chapters": {
+        "id": "string",
+        "title": "string",
+        "chapter": "string",
+      }
+  }
+  ```
+  </Tab>
+
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  }
+  ```
+  </Tab>
+
+  <Tab>
+
+    **MIME Type:** `application/json`
+    ```json copy=false
+    {
+      "message": "string"
+    }
+    ```
+
+  </Tab>
+</Tabs>

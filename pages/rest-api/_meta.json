@@ -1,143 +1,19 @@
 {
   "start": "Get Started",
-  "-- Anime --": {
-    "type": "separator",
-    "title": "Anime"
-  },
-  "9anime": {
-    "title": "9Anime (not working)",
-    "theme": { "collapsed": true }
-  },
-  "animefox": {
-    "title": "AnimeFox",
-    "theme": { "collapsed": true }
-  },
-  "animepahe": {
-    "title": "Animepahe",
-    "theme": { "collapsed": true }
-  },
-  "bilibili": {
-    "title": "BiliBili",
-    "theme": { "collapsed": true }
-  },
-  "crunchyroll": {
-    "title": "Crunchyroll",
-    "theme": { "collapsed": true }
-  },
-  "enime": {
-    "title": "Enime",
-    "theme": { "collapsed": true }
-  },
-  "gogoanime": {
-    "title": "GogoAnime",
-    "theme": { "collapsed": true }
-  },
-  "zoro": {
-    "title": "Zoro",
-    "theme": { "collapsed": true }
-  },
-  "-- Books --": {
-    "type": "separator",
-    "title": "Books"
-  },
-  "libgen": {
-    "title": "Libgen",
-    "theme": { "collapsed": true }
-  },
-  "-- Comics --": {
-    "type": "separator",
-    "title": "Comics"
-  },
-  "getcomics": {
-    "title": "GetComics",
-    "theme": { "collapsed": true }
-  },
-  "-- Light Novels --": {
-    "type": "separator",
-    "title": "Light Novels"
-  },
-  "read-light-novels": {
-    "title": "Read Light Novels",
-    "theme": { "collapsed": true }
-  },
-  "-- Manga --": {
-    "type": "separator",
-    "title": "Manga"
-  },
-  "mangadex": {
-    "title": "Mangadex",
-    "theme": { "collapsed": true }
-  },
-  "mangahere": {
-    "title": "Mangahere",
-    "theme": { "collapsed": true }
-  },
-  "mangakakalot": {
-    "title": "Mangakakalot",
-    "theme": { "collapsed": true }
-  },
-  "mangapark-v2": {
-    "title": "Mangapark (v2)",
-    "theme": { "collapsed": true }
-  },
-  "mangapill": {
-    "title": "Mangapill",
-    "theme": { "collapsed": true }
-  },
-  "mangareader": {
-    "title": "Mangareader",
-    "theme": { "collapsed": true }
-  },
-  "mangasee123": {
-    "title": "Mangasee123",
-    "theme": { "collapsed": true }
-  },
-  "-- Meta --": {
-    "type": "separator",
-    "title": "Meta"
-  },
-  "anilist-anime": {
-    "title": "Anilist (Anime)",
-    "theme": { "collapsed": true }
-  },
-  "anilist-manga": {
-    "title": "Anilist (Manga)",
-    "theme": { "collapsed": true }
-  },
-  "myanimelist": {
-    "title": "MyAnimeList",
-    "theme": { "collapsed": true }
-  },
-  "the-movie-database": {
-    "title": "The Movie Database (TMDB)",
-    "theme": { "collapsed": true }
-  },
-  "-- Movies --": {
-    "type": "separator",
-    "title": "Movies"
-  },
-  "dramacool": {
-    "title": "Dramacool",
-    "theme": { "collapsed": true }
-  },
-  "flixhq": {
-    "title": "FlixHQ",
-    "theme": { "collapsed": true }
-  },
-  "ummagurau": {
-    "title": "Ummagurau",
-    "theme": { "collapsed": true }
-  },
-  "viewasian": {
-    "title": "ViewAsian",
-    "theme": { "collapsed": true }
-  },
-  "-- News --": {
-    "type": "separator",
-    "title": "News"
-  },
-  "animenewsnetwork": {
-    "title": "AnimeNewsNetwork",
-    "theme": { "collapsed": true }
-  }
+
+  "Anime": { "title": "Anime", "theme": { "collapsed": true } },
+
+  "Books": { "title": "Books", "theme": { "collapsed": true } },
+
+  "Comics": { "title": "Comics", "theme": { "collapsed": true } },
+
+  "Meta": { "title": "Meta", "theme": { "collapsed": true } },
+
+  "Light-Novels": { "title": "Light Novels", "theme": { "collapsed": true } },
+
+  "Manga": { "title": "Manga", "theme": { "collapsed": true } },
+
+  "Movies": { "title": "Movies", "theme": { "collapsed": true } },
+
+  "News": { "title": "News", "theme": { "collapsed": true } }
 }
