@@ -38,7 +38,7 @@
 
 - [ ] Anilist (Anime) (@Tdanks2000)
 - [ ] Anilist (Manga) (@illusionTBA)
-- [ ] MyAnimeList
+- [ ] MyAnimeList (@wearr)
 - [x] The Movie Database
 
 ### Movies
