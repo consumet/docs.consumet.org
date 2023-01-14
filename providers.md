@@ -2,7 +2,7 @@
 
 ### Anime
 
-- [ ] 9anime (@Tdanks2000)
+- [x] 9anime (@Tdanks2000)
 - [x] animeFox
 - [x] Animepahe
 - [ ] BiliBili
