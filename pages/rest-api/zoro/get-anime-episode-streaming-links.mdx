@@ -1,5 +1,111 @@
 ---
-title: Zoro | Streaming Links
+title: zoro | Streaming Links
 ---
 
+import { Tab, Tabs } from "nextra-theme-docs";
+
 # Get Anime Episode Streaming Links
+
+Technical details regarding the usage of the get anime streaming links function for the zoro provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/anime/zoro/watch/{episodeId}?server={serverName}
+```
+
+## Query Parameters
+
+| Parameter |                                     Type                                     | Description                                                       | Required? |   Default    |
+| :-------: | :--------------------------------------------------------------------------: | ----------------------------------------------------------------- | :-------: | :----------: |
+|   query   |                                    string                                    | The search query; i.e. the title of the item you are looking for. |    Yes    |     `""`     |
+|  server   | Enum: `"vidcloud"` `"streamsb"` `"vidstreaming"` `"streamtape"` `"vidcloud"` | The page number of results to return.                             |    No     | `"vidcloud"` |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        /*
+        Using the example episode ID of 'spy-x-family-17977$episode$89506$both',
+        explicitly defining default server for demostrative purposes.
+        */
+        const url = "https://api.consumet.org/anime/zoro/watch?episodeId=spy-x-family-17977$episode$89506$both&server=vidcloud"
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: {
+                    episodeId: "spy-x-family-17977$episode$89506$both",
+                    server: "vidcloud"
+                } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        """
+        Using the example episode ID of 'spy-x-family-17977$episode$89506$both',
+        explicitly defining default server for demostrative purposes.
+        """
+        url = "https://api.consumet.org/anime/zoro/watch?episodeId=spy-x-family-17977$episode$89506$both&server=vidcloud"
+        response = requests.get(url, params={
+            "episodeId": "spy-x-family-17977$episode$89506$both",
+            "server": "vidcloud"
+        })
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "headers": {
+        "Referer": "string",
+        "watchsb": "string", // or null, since only provided with server being equal to "streamsb".
+        "User-Agent": "string" // or null
+    },
+    "sources": [
+        {
+        "url": "string",
+        "quality": "string",
+        "isM3U8": true
+        }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+</Tabs>

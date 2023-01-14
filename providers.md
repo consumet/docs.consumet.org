@@ -10,7 +10,7 @@
 - [ ] kamyroll
 - [ ] Enime
 - [x] GogoAnime
-- [ ] Zoro (@Tdanks2000)
+- [x] Zoro (@Tdanks2000)
 
 ### Books
 
