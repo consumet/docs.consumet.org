@@ -31,7 +31,7 @@
 - [ ] Mangakakalot (@wearrrrr)
 - [ ] Mangapark  (@illusionTBA)
 - [ ] Mangapill (@Tdanks2000)
-- [ ] Mangareader (@illusionTBA)
+- [ ] Mangareader (@Tdanks2000)
 - [ ] Mangasee123  (@aidanjuma)
 
 ### Meta
