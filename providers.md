@@ -5,34 +5,34 @@
 - [x] 9anime (@Tdanks2000)
 - [x] animeFox
 - [x] Animepahe
-- [ ] BiliBili
-- [ ] Crunchyroll
-- [ ] kamyroll
-- [ ] Enime
+- [ ] BiliBili (@wearrrrr)
+- [ ] Crunchyroll (@Tdanks2000)
+- [ ] kamyroll (@illusionTBA)
+- [ ] Enime (@Tdanks2000)
 - [x] GogoAnime
 - [x] Zoro (@Tdanks2000)
 
 ### Books
 
-- [ ] Libgen
+- [ ] Libgen (@wearrrrr)
 
 ### Comics
 
-- [ ] GetComics
+- [ ] GetComics (@illusionTBA)
 
 ### Light Novels
 
-- [ ] Read Light Novels
+- [ ] Read Light Novels (@aidanjuma)
 
 ### Manga
 
-- [ ] Mangadex
-- [ ] Mangahere
-- [ ] Mangakakalot
-- [ ] Mangapark
-- [ ] Mangapill
-- [ ] Mangareader
-- [ ] Mangasee123
+- [ ] Mangadex (@Tdanks2000)
+- [ ] Mangahere (@aidanjuma)
+- [ ] Mangakakalot (@wearrrrr)
+- [ ] Mangapark  (@illusionTBA)
+- [ ] Mangapill (@Tdanks2000)
+- [ ] Mangareader (@illusionTBA)
+- [ ] Mangasee123  (@aidanjuma)
 
 ### Meta
 
