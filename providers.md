@@ -37,7 +37,7 @@
 ### Meta
 
 - [ ] Anilist (Anime) (@Tdanks2000)
-- [ ] Anilist (Manga)
+- [ ] Anilist (Manga) (@illusionTBA)
 - [ ] MyAnimeList
 - [x] The Movie Database
 
