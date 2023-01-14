@@ -2,7 +2,7 @@
 
 ### Anime
 
-- [ ] 9anime
+- [ ] 9anime (@Tdanks2000)
 - [x] animeFox
 - [x] Animepahe
 - [ ] BiliBili
@@ -10,7 +10,7 @@
 - [ ] kamyroll
 - [ ] Enime
 - [x] GogoAnime
-- [ ] Zoro
+- [ ] Zoro (@Tdanks2000)
 
 ### Books
 
@@ -36,7 +36,7 @@
 
 ### Meta
 
-- [ ] Anilist (Anime)
+- [ ] Anilist (Anime) (@Tdanks2000)
 - [ ] Anilist (Manga)
 - [ ] MyAnimeList
 - [x] The Movie Database
