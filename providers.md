@@ -6,9 +6,9 @@
 - [x] AnimeFox
 - [x] Animepahe
 - [ ] BiliBili [@wearrrrr](https://github.com/wearrrrr)
-- [ ] Crunchyroll [@TDanks2000](https://github.com/TDanks2000)
+- [ ] Crunchyroll [@InumakiEU](https://github.com/5H4D0WILA)
 - [ ] Kamyroll [@illusionTBA](https://github.com/illusionTBA)
-- [ ] Enime [@TDanks2000](https://github.com/TDanks2000)
+- [x] Enime (needs checking over and needs servers added)
 - [x] GogoAnime
 - [x] Zoro
 
@@ -26,12 +26,12 @@
 
 ### Manga
 
-- [ ] Mangadex [@TDanks2000](https://github.com/TDanks2000)
+- [x] Mangadex
 - [ ] Mangahere [@aidanjuma](https://github.com/aidanjuma)
 - [ ] Mangakakalot [@wearrrrr](https://github.com/wearrrrr)
 - [ ] Mangapark [@illusionTBA](https://github.com/illusionTBA)
-- [ ] Mangapill [@TDanks2000](https://github.com/TDanks2000)
-- [ ] Mangareader [@TDanks2000](https://github.com/TDanks2000)
+- [x] Mangapill
+- [x] Mangareader
 - [x] Mangasee123
 
 ### Meta

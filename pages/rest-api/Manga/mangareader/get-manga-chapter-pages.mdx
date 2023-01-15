@@ -1,5 +1,92 @@
 ---
-title: Mangareader | Manga Chapter Pages
+title: mangareader | Manga Chapter Pages
 ---
 
+import { Tab, Tabs } from "nextra-theme-docs";
+
 # Get Manga Chapter Pages
+
+Technical details regarding the usage of the get manga chapter pages function for the mangareader provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/manga/mangareader/read?chapterId={chapterId}
+```
+
+## Query Parameters
+
+| Parameter |  Type  | Description                                                                                                 | Required? | Default |
+| :-------: | :----: | ----------------------------------------------------------------------------------------------------------- | :-------: | :-----: |
+| chapterId | string | The mangareader ID of the chapter; i.e. provided by searching for said anime and selecting the correct one. |    Yes    |         |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example chapter ID of "call-of-the-night-2234/en/chapter-1"
+        const url = "https://api.consumet.org/manga/mangareader/read";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { chapterId: "call-of-the-night-2234/en/chapter-1"} });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example chapter ID of "call-of-the-night-2234/en/chapter-1"
+        url = "https://api.consumet.org/manga/mangareader/read"
+        response = requests.get(url, params={"chapterId": "call-of-the-night-2234/en/chapter-1"})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  [
+    {
+      "page": number,
+      "img": "string",
+      "headerForImage": "string"
+    },
+    ...
+  ]
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+</Tabs>
