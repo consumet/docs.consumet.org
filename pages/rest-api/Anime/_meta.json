@@ -1,0 +1,38 @@
+{
+  "9anime": {
+    "title": "9Anime (not working)",
+    "theme": { "collapsed": true }
+  },
+  "animefox": {
+    "title": "AnimeFox",
+    "theme": { "collapsed": true }
+  },
+  "animepahe": {
+    "title": "Animepahe",
+    "theme": { "collapsed": true }
+  },
+  "bilibili": {
+    "title": "BiliBili",
+    "theme": { "collapsed": true }
+  },
+  "crunchyroll": {
+    "title": "Crunchyroll",
+    "theme": { "collapsed": true }
+  },
+  "enime": {
+    "title": "Enime",
+    "theme": { "collapsed": true }
+  },
+  "gogoanime": {
+    "title": "GogoAnime",
+    "theme": { "collapsed": true }
+  },
+  "kamyroll": {
+    "title": "Kamyroll",
+    "theme": { "collapsed": true }
+  },
+  "zoro": {
+    "title": "Zoro",
+    "theme": { "collapsed": true }
+  }
+}

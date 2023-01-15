@@ -2,4 +2,84 @@
 title: Mangasee123 | Search
 ---
 
+import { Tab, Tabs } from "nextra-theme-docs";
+
 # Search
+
+Technical details regarding the usage of the search function for the Mangasee123 provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/manga/mangasee123/{query}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                                                       | Required? | Default |
+| :-------: | :----: | ----------------------------------------------------------------- | :-------: | :-----: |
+|   query   | string | The search query; i.e. the title of the item you are looking for. |    Yes    |         |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example query "demon".
+        const url = "https://api.consumet.org/manga/mangasee123/demon";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example query "demon".
+        url = "https://api.consumet.org/manga/mangasee123/demon"
+        response = requests.get(url)
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "currentPage": 0,
+    "hasNextPage": true,
+    "results": [
+      {
+        "id": "string",
+        "title": "string",
+        "altTitles": ["string"],
+        "headerForImage": { "Referer": "string" },
+        "image": "string"
+      }
+    ]
+  }
+  ```
+  </Tab>
+</Tabs>

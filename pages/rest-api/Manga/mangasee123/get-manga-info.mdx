@@ -2,4 +2,104 @@
 title: Mangasee123 | Manga Info
 ---
 
+import { Tab, Tabs } from "nextra-theme-docs";
+
 # Get Manga Info
+
+Technical details regarding the usage of the get manga info function for the Mangasee123 provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/manga/mangasee123/info?id={id}
+```
+
+## Query Parameters
+
+| Parameter |  Type  | Description                                                                                               | Required? | Default |
+| :-------: | :----: | --------------------------------------------------------------------------------------------------------- | :-------: | :-----: |
+|    id     | string | The Mangasee123 ID of the manga; i.e. provided by searching for said manga and selecting the correct one. |    Yes    |         |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example ID of "Yofukashi-no-Uta".
+        const url = "https://api.consumet.org/manga/mangasee123/info";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { id: "Yofukashi-no-Uta"} });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example ID of "Yofukashi-no-Uta".
+        url = "https://api.consumet.org/manga/mangasee123/info"
+        response = requests.get(url, params={"id": "Yofukashi-no-Uta"})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "id": "string",
+    "title": "string",
+    "altTitles": ["string"], // or null
+    "genres": ["string"], // or null
+    "headerForImage": "string", // or null
+    "image": "string", // or null
+    "chapters": [
+      {
+        "id": "string",
+        "title": "string",
+        "releaseDate": "string" // or null
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+</Tabs>

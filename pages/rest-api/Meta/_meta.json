@@ -1,0 +1,18 @@
+{
+  "anilist-anime": {
+    "title": "Anilist (Anime)",
+    "theme": { "collapsed": true }
+  },
+  "anilist-manga": {
+    "title": "Anilist (Manga)",
+    "theme": { "collapsed": true }
+  },
+  "myanimelist": {
+    "title": "MyAnimeList",
+    "theme": { "collapsed": true }
+  },
+  "the-movie-database": {
+    "title": "The Movie Database (TMDB)",
+    "theme": { "collapsed": true }
+  }
+}
