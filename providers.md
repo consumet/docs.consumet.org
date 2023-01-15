@@ -36,7 +36,17 @@
 
 ### Meta
 
-- [ ] Anilist (Anime) [@TDanks2000](https://github.com/TDanks2000)
+- Anilist
+  - [x] search
+  - [x] info
+  - [x] sources
+  - [ ] advanced search
+  - [ ] airing schedule
+  - [ ] anime by genres
+  - [ ] popular anime
+  - [ ] random anime
+  - [ ] recent anime
+  - [ ] trending anime
 - [x] Anilist (Manga)
 - [ ] MyAnimeList [@wearrrrr](https://github.com/wearrrrr)
 - [x] The Movie Database
