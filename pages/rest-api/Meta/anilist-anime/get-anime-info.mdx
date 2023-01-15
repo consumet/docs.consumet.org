@@ -1,5 +1,111 @@
 ---
-title: Anilist for Anime | Anime Info
+title: Anilist (Anime) | Streaming Links
 ---
 
-# Get Anime Info
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Anime Episode Streaming Links
+
+Technical details regarding the usage of the get anime streaming links function for the anilist meta provider can be found below.
+Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/meta/anilist/watch/{episodeId}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                    | Required? | Default |
+| :-------: | :----: | ------------------------------ | :-------: | :-----: |
+| episodeId | string | The ID of the selected episode |    Yes    |   N/A   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        /*
+        Using the example episode ID of  'spy-x-family-episode-1',
+        */
+        const url = "https://api.consumet.org/meta/anilist/watch/spy-x-family-episode-1";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        """
+        Using the example episode ID of 'spy-x-family-episode-1',
+        """
+        url = "https://api.consumet.org/meta/anilist/watch/spy-x-family-episode-1"
+        response = requests.get(url)
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+      "headers": {
+          "Referer": "string"
+      },
+      "sources": [
+          {
+          "url": "string",
+          "quality": "string",
+          "isM3U8": true
+          }
+      ],
+      "subtitles": [
+          {
+          "url": "string",
+          "lang": "string"
+          }
+      ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  }   
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  } 
+  ```
+  </Tab>
+</Tabs>

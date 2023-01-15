@@ -33,7 +33,7 @@ https://api.consumet.org/meta/tmdb/watch/{episodeId}?id={showId}
         Using the example episode ID of '2922' and the example show ID of 'tv/watch-the-flash-39535',
 
         */
-        const url = "https://api.consumet.org/movies/flixhq/watch/2922";
+        const url = "https://api.consumet.org/meta/tmdb/watch/2922";
         const data = async () => {
             try {
                 const { data } = await axios.get(url, { params: { id: "tv/watch-the-flash-39535"} });
@@ -56,7 +56,7 @@ https://api.consumet.org/meta/tmdb/watch/{episodeId}?id={showId}
         """
         Using the example episode ID of '2922' and the example show ID of 'tv/watch-the-flash-39535',
         """
-        url = "https://api.consumet.org/movies/flixhq/watch/2922"
+        const url = "https://api.consumet.org/meta/tmdb/watch/2922";
         response = requests.get(url, params={"id": "tv/watch-the-flash-39535"})
         data = response.json()
 
