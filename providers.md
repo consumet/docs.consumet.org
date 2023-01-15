@@ -27,7 +27,7 @@
 ### Manga
 
 - [x] Mangadex
-- [ ] Mangahere [@aidanjuma](https://github.com/aidanjuma)
+- [ ] Mangahere [@tdanks2000](https://github.com/tdanks2000)
 - [ ] Mangakakalot [@wearrrrr](https://github.com/wearrrrr)
 - [ ] Mangapark [@illusionTBA](https://github.com/illusionTBA)
 - [x] Mangapill
