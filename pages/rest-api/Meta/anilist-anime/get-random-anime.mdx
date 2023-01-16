@@ -1,5 +1,132 @@
 ---
-title: Anilist for Anime | Random Anime
+title: Anilist (Anime) | random Anime
 ---
 
-# Get Random Anime
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Search
+
+Technical details regarding the usage of the search function for the anilist provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/meta/anilist/random-anime
+```
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example query "demon", and looking at the first page of results.
+        const url = "https://api.consumet.org/meta/anilist/random-anime";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example query "demon", and looking at the first page of results.
+        url = "https://api.consumet.org/meta/anilist/random-anime"
+        response = requests.get(url)
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+      "id": "string",
+      "title": "string[]",
+      "malId": "integer",
+      "trailer": {
+        "id": "string",
+        "site": "string",
+        "thumbnail": "string"
+      },
+      "image": "string",
+      "popularity": "number",
+      "color": "string",
+      "description": "string",
+      "status": "string",
+      "releaseDate": "integer",
+      "startDate": {
+        "year": "number",
+        "month": "number",
+        "day": "number"
+      },
+      "endDate": {
+         "year": "number",
+         "month": "number",
+         "day": "number"
+        },
+      "rating": "integer",
+      "genres": "string[]",
+      "season": "string",
+      "studios": "string[]",
+      "type": "string",
+      "recommendations": {
+        "id": "string",
+        "malId": "string",
+        "title": "string[]",
+        "status": "string",
+        "episodes": "number",
+        "image": "string",
+        "cover": "string",
+        "rating": "number",
+        "type": "string",
+      },
+      "characters": {
+        "id": "string",
+        "role": "string",
+        "name": "string[]",
+        "image": "string",
+      },
+      "relations": {
+        "id": "integer",
+        "relationType": "string",
+        "malId": "integer",
+        "title": "string[]",
+        "status": "string",
+        "episodes": "integer",
+        "image": "string",
+        "color": "string",
+        "type": "string",
+        "cover": "string",
+        "rating": "integer",
+      },
+      "episodes": {
+        "id": "string",
+        "title": "string",
+        "chapter": "string",
+      }
+  }
+  ```
+  </Tab>
+</Tabs>

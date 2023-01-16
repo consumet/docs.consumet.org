@@ -1,5 +1,95 @@
 ---
-title: Anilist for Anime | Advanced Search
+title: Anilist (Anime) | Advanced search
 ---
 
-# Advanced Search
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Search
+
+Technical details regarding the usage of the search function for the anilist provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/meta/anilist/advanced-search
+```
+
+## Query Parameters
+
+| Parameter |  Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                            | Required? |              Default               |
+| :-------: | :-----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :-------: | :--------------------------------: |
+|   query   | string  | The search query; i.e. the title of the item you are looking for.                                                                                                                                                                                                                                                                                                                                                                                      |    No     |                `""`                |
+|   type    | string  | The type of entertainment. Enum: `"ANIME"` `"MANGA"`                                                                                                                                                                                                                                                                                                                                                                                                   |    No     |             `"ANIME"`              |
+|   page    | integer | The page number of results to return.                                                                                                                                                                                                                                                                                                                                                                                                                  |    No     |                `1`                 |
+|  perPage  | integer | The number of items perpage of results to return.                                                                                                                                                                                                                                                                                                                                                                                                      |    No     |                `20`                |
+|  season   | string  | The season the anime aired in. Enum: `"WINTER"` `"SPRING"` `"SUMMER"` `"FALL"`                                                                                                                                                                                                                                                                                                                                                                         |    No     |                `""`                |
+|  format   | string  | The fromat of the anime. Enum: `"TV"` `"TV_SHORT"` `"OVA"` `"ONA"` `"MOVIE"` `"SPECIAL"` `"MUSIC"`                                                                                                                                                                                                                                                                                                                                                     |    No     |                `""`                |
+|   sort    |  array  | the items you want to sort by. Array Enum: `"POPULARITY_DESC"` `"POPULARITY"` `"TRENDING_DESC"` `"TRENDING"` `"UPDATED_AT_DESC"` `"UPDATED_AT"` `"START_DATE_DESC"` `"START_DATE"` `"END_DATE_DESC"` `"END_DATE"` `"FAVOURITES_DESC"` `"FAVOURITES"` `"SCORE_DESC"` `"SCORE"` `"TITLE_ROMAJI_DESC"` `"TITLE_ROMAJI"` `"TITLE_ENGLISH_DESC"` `"TITLE_ENGLISH"` `"TITLE_NATIVE_DESC"` `"TITLE_NATIVE"` `"EPISODES_DESC"` `"EPISODES"` `"ID"` `"ID_DESC"` |    No     | `["POPULARITY_DESC","SCORE_DESC"]` |
+|  genres   |  array  | The genres you want to search for. Array Enum: `"Action"` `"Adventure"` `"Cars"` `"Comedy"` `"Drama"` `"Fantasy"` `"Horror"` `"Mahou Shoujo"` `"Mecha"` `"Music"` `"Mystery"` `"Psychological"` `"Romance"` `"Sci-Fi"` `"Slice of Life"` `"Sports"` `"Supernatural"` `"Thriller"`                                                                                                                                                                      |    No     |                `""`                |
+|    id     | string  | The id of the anime you are looking for                                                                                                                                                                                                                                                                                                                                                                                                                |    No     |                `""`                |
+|   year    | string  | The year the anime released in                                                                                                                                                                                                                                                                                                                                                                                                                         |    No     |                `""`                |
+|  status   | string  | The current status of the anime you are looking for Enum: `"RELEASING"` `"NOT_YET_RELEASED"` `"FINISHED"` `"CANCELLED"` `"HIATUS"`                                                                                                                                                                                                                                                                                                                     |    No     |                `""`                |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example query "demon", and looking at the first page of results.
+        const url = "https://api.consumet.org/meta/anilist/advanced-search";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { page: 1 } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example query "demon", and looking at the first page of results.
+        url = "https://api.consumet.org/meta/anilist/advanced-search"
+        response = requests.get(url, params={"page": 1})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+  "currentPage": 1,
+  "results": [
+      {
+        "id": "string",
+        "title": "string",
+        "image": "string",
+        "type": "string",
+        "rating": "number",
+        "releaseDate": "string"
+      }
+    ]
+  }
+  ```
+  </Tab>
+</Tabs>

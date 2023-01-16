@@ -73,22 +73,70 @@ https://api.consumet.org/meta/anilist/watch/{episodeId}
   **MIME Type:** `application/json`
   ```json copy=false
   {
-      "headers": {
-          "Referer": "string"
+      "id": "string",
+      "title": "string[]",
+      "malId": "integer",
+      "trailer": {
+        "id": "string",
+        "site": "string",
+        "thumbnail": "string"
       },
-      "sources": [
-          {
-          "url": "string",
-          "quality": "string",
-          "isM3U8": true
-          }
-      ],
-      "subtitles": [
-          {
-          "url": "string",
-          "lang": "string"
-          }
-      ]
+      "image": "string",
+      "popularity": "number",
+      "color": "string",
+      "description": "string",
+      "status": "string",
+      "releaseDate": "integer",
+      "startDate": {
+        "year": "number",
+        "month": "number",
+        "day": "number"
+      },
+      "endDate": {
+         "year": "number",
+         "month": "number",
+         "day": "number"
+        },
+      "rating": "integer",
+      "genres": "string[]",
+      "season": "string",
+      "studios": "string[]",
+      "type": "string",
+      "recommendations": {
+        "id": "string",
+        "malId": "string",
+        "title": "string[]",
+        "status": "string",
+        "episodes": "number",
+        "image": "string",
+        "cover": "string",
+        "rating": "number",
+        "type": "string",
+      },
+      "characters": {
+        "id": "string",
+        "role": "string",
+        "name": "string[]",
+        "image": "string",
+      },
+      "relations": {
+        "id": "integer",
+        "relationType": "string",
+        "malId": "integer",
+        "title": "string[]",
+        "status": "string",
+        "episodes": "integer",
+        "image": "string",
+        "color": "string",
+        "type": "string",
+        "cover": "string",
+        "rating": "integer",
+      },
+      "episodes": {
+        "id": "string",
+        "title": "string",
+        "chapter": "string",
+      }
   }
   ```
   </Tab>
