@@ -7,7 +7,6 @@
 - [x] Animepahe
 - [ ] BiliBili [@wearrrrr](https://github.com/wearrrrr)
 - [ ] Crunchyroll [@InumakiEU](https://github.com/5H4D0WILA)
-- [ ] Kamyroll [@illusionTBA](https://github.com/illusionTBA)
 - [x] Enime (needs checking over and needs servers added)
 - [x] GogoAnime
 - [x] Zoro
