@@ -28,7 +28,7 @@
 - [x] Mangadex
 - [x] Mangahere
 - [ ] Mangakakalot [@wearrrrr](https://github.com/wearrrrr)
-- [ ] Mangapark [@illusionTBA](https://github.com/illusionTBA)
+- [X] Mangapark 
 - [x] Mangapill
 - [x] Mangareader
 - [x] Mangasee123
