@@ -6,7 +6,7 @@
 - [x] AnimeFox
 - [x] Animepahe
 - [ ] BiliBili [@wearrrrr](https://github.com/wearrrrr)
-- [ ] Crunchyroll [@InumakiEU](https://github.com/5H4D0WILA)
+- [x] Crunchyroll
 - [x] Enime (needs checking over and needs servers added)
 - [x] GogoAnime
 - [x] Zoro
@@ -28,7 +28,7 @@
 - [x] Mangadex
 - [x] Mangahere
 - [ ] Mangakakalot [@wearrrrr](https://github.com/wearrrrr)
-- [X] Mangapark 
+- [x] Mangapark
 - [x] Mangapill
 - [x] Mangareader
 - [x] Mangasee123
