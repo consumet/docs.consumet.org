@@ -6,6 +6,10 @@ const config: DocsThemeConfig = {
   useNextSeoProps: () => {
     return { titleTemplate: `%s - Consumet` };
   },
+  faviconGlyph: "🚧",
+  banner: {
+    text: "🚧 The Consumet documentation is undergoing reconstruction. Please be patient for all providers to be fully-documented. 🚧",
+  },
   logo: <span>Consumet Documentation</span>,
   project: {
     link: "https://github.com/consumet",
