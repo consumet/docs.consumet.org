@@ -1,5 +1,95 @@
 ---
-title: Anilist for Anime | Recent Episodes
+title: Anilist (Anime) | recent-episodes Anime
 ---
 
-# Get Recent Anime Episodes
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Search
+
+Technical details regarding the usage of the search function for the anilist provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/meta/anilist/recent-episodes?page={page}&perPage={perPage}&provider={provider}
+```
+
+## Query Parameters
+
+| Parameter |  Type   | Description                                             | Required? |   Default   |
+| :-------: | :-----: | ------------------------------------------------------- | :-------: | :---------: |
+|   page    | integer | The page number of results to return.                   |    No     |     `1`     |
+|  perPage  | integer | The number of results per page to return.               |    No     |    `20`     |
+| provider  | string  | the provider you want to fetch the recent episodes from |    No     | `gogoanime` |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example query "demon", and looking at the first page of results.
+        const url = "https://api.consumet.org/meta/anilist/recent-episodes";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: {
+                   page: 1,
+                   perPage: 20
+                   provider: "gogoanime"
+                  } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example query "demon", and looking at the first page of results.
+        url = "https://api.consumet.org/meta/anilist/recent-episodes"
+        response = requests.get(url, params={
+            "page": 1,
+            "perPage": 20,
+            "provider": "gogoanime"
+        })
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+  "currentPage": 1,
+  "results": [
+      {
+        "id": "string",
+        "title": "string",
+        "image": "string",
+        "type": "string",
+        "rating": "number",
+        "releaseDate": "string"
+      }
+    ]
+  }
+  ```
+  </Tab>
+</Tabs>

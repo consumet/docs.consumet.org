@@ -1,7 +1,7 @@
 {
-  "name": "nextra-docs-template",
-  "version": "0.0.1",
-  "description": "Nextra docs template",
+  "name": "docs.consumet.org",
+  "version": "0.0.1-beta",
+  "description": "The new and improved documentation for Consumet",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,14 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shuding/nextra-docs-template.git"
+    "url": "git+https://github.com/consumet/docs.consumet.org.git"
   },
-  "author": "Shu Ding <g@shud.in>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shuding/nextra-docs-template/issues"
+    "url": "https://github.com/consumet/docs.consumet.org/issues"
   },
-  "homepage": "https://github.com/shuding/nextra-docs-template#readme",
+  "homepage": "https://github.com/consumet/docs.consumet.org/#readme",
   "dependencies": {
     "next": "^13.0.6",
     "nextra": "2.0.1",

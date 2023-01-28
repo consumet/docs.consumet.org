@@ -42,11 +42,10 @@
   - [x] airing schedule
   - [x] popular anime
   - [x] random anime
-  - [ ] advanced search
+  - [x] advanced search
+  - [x] Anilist (Manga)
   - [ ] sources
   - [ ] anime by genres
-  - [ ] recent anime
-- [x] Anilist (Manga)
 - [ ] MyAnimeList [@wearrrrr](https://github.com/wearrrrr)
 - [x] The Movie Database
 
