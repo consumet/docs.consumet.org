@@ -1,0 +1,21 @@
+# FAQs
+
+## How do I fix a source error (503)?
+
+<details>
+  <summary>Add the relevant ```User-Agent``` header.</summary>
+  Add the following header to your video player request:
+  ```
+  {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'}
+  ```
+</details>
+
+## CORS causing trouble?
+
+<details>
+  <summary>Use the Consumet CORS proxy.</summary>
+  Append the source link for the media to `https://cors.consumet.stream/`, like so:
+  ```
+  https://cors.consumet.stream/<SOURCE_LINK>
+  ```
+</details>
