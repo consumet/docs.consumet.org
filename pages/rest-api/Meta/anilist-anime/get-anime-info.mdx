@@ -1,5 +1,164 @@
 ---
-title: Anilist (Anime) | Search
+title: Anilist (Anime) | Info
 ---
 
-# Get Anime By Genres
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Info
+
+Technical details regarding the usage of the get manga info function for the Anilist Manga provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/meta/anilist/info/{id}?provider={provider}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description         | Required? | Default |
+| :-------: | :----: | ------------------- | :-------: | :-----: |
+|    id     | string | The anilist info id |    Yes    |  `N/A`  |
+
+## Query Parameters
+
+| Parameter |  Type  | Description                                                                                                                             | Required? | Default |
+| :-------: | :----: | --------------------------------------------------------------------------------------------------------------------------------------- | :-------: | :-----: |
+| provider  | string | The provider you want to use. Enum: `9anime`, `animefox`, `animepahe`, `bilibili`, `crunchyroll`, `enime`, `gogoanime`, `marin`, `zoro` |    No     |  `N/A`  |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example id of "21" (one piece) and the query of "gogoanime"
+        const url = "https://api.consumet.org/meta/anilist/info/21";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { provider: "gogoanime" } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        // Using the example id of "21" (one piece) and the query of "gogoanime"
+        url = "https://api.consumet.org/meta/anilist/info/30013"
+        response = requests.get(url, params={"provider": "gogoanime"})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "404 Not Found"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+      "id": "string",
+      "title": "string[]",
+      "malId": "integer",
+      "trailer": {
+        "id": "string",
+        "site": "string",
+        "thumbnail": "string"
+      },
+      "image": "string",
+      "popularity": "number",
+      "color": "string",
+      "description": "string",
+      "status": "string",
+      "releaseDate": "integer",
+      "startDate": {
+        "year": "number",
+        "month": "number",
+        "day": "number"
+      },
+      "endDate": {
+        "year": "number",
+        "month": "number",
+        "day": "number"
+        },
+      "rating": "integer",
+      "genres": "string[]",
+      "season": "string",
+      "studios": "string[]",
+      "type": "string",
+      "recommendations": {
+        "id": "string",
+        "malId": "string",
+        "title": "string[]",
+        "status": "string",
+        "episodes": "number",
+        "image": "string",
+        "cover": "string",
+        "rating": "number",
+        "type": "string",
+      },
+      "characters": {
+        "id": "string",
+        "role": "string",
+        "name": "string[]",
+        "image": "string",
+      },
+      "relations": {
+        "id": "integer",
+        "relationType": "string",
+        "malId": "integer",
+        "title": "string[]",
+        "status": "string",
+        "episodes": "integer",
+        "image": "string",
+        "color": "string",
+        "type": "string",
+        "cover": "string",
+        "rating": "integer",
+      },
+      "episodes": {
+        "id": "string",
+        "title": "string",
+        "episode": "string",
+      }
+  }
+  ```
+  </Tab>
+
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  }
+  ```
+  </Tab>
+
+  <Tab>
+
+    **MIME Type:** `application/json`
+    ```json copy=false
+    {
+      "message": "string"
+    }
+    ```
+
+  </Tab>
+</Tabs>
