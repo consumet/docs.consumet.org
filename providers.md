@@ -43,9 +43,9 @@
   - [x] popular anime
   - [x] random anime
   - [x] advanced search
-  - [x] Anilist (Manga)
-  - [ ] sources
+  - [X] sources
   - [ ] anime by genres
+- [x] Anilist (Manga)
 - [ ] MyAnimeList [@wearrrrr](https://github.com/wearrrrr)
 - [x] The Movie Database
 
