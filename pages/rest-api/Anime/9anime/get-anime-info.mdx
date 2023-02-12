@@ -1,24 +1,24 @@
 ---
-title: zoro | Anime Info
+title: 9anime | Anime Info
 ---
 
 import { Tab, Tabs } from "nextra-theme-docs";
 
 # Get Anime Info
 
-Technical details regarding the usage of the get anime info function for the zoro provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+Technical details regarding the usage of the get anime info function for the 9anime provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
 
 ## Route Schema (URL)
 
 ```
-https://api.consumet.org/anime/zoro/info?id={id}
+https://api.consumet.org/anime/9anime/info?id={id}
 ```
 
 ## Query Parameters
 
-| Parameter |  Type  | Description                                                                                        | Required? | Default |
-| :-------: | :----: | -------------------------------------------------------------------------------------------------- | :-------: | :-----: |
-|    id     | string | The zoro ID of the anime; i.e. provided by searching for said anime and selecting the correct one. |    Yes    |         |
+| Parameter |  Type  | Description                                                                                          | Required? | Default |
+| :-------: | :----: | ---------------------------------------------------------------------------------------------------- | :-------: | :-----: |
+|    id     | string | The 9anime ID of the anime; i.e. provided by searching for said anime and selecting the correct one. |    Yes    |         |
 
 ## Request Samples
 
@@ -29,7 +29,7 @@ https://api.consumet.org/anime/zoro/info?id={id}
         import axios from "axios";
 
         // Using the example ID of "spy-x-family.6ll19".
-        const url = "https://api.consumet.org/anime/zoro/info?id=spy-x-family.6ll19";
+        const url = "https://api.consumet.org/anime/9anime/info?id=spy-x-family.6ll19";
         const data = async () => {
             try {
                 const { data } = await axios.get(url, {params: {id: "spy-x-family.6ll19"}});
@@ -50,7 +50,7 @@ https://api.consumet.org/anime/zoro/info?id={id}
         import requests
 
         # Using the example ID of "spy-x-family.6ll19".
-        url = "https://api.consumet.org/anime/zoro/info?id=spy-x-family.6ll19"
+        url = "https://api.consumet.org/anime/9anime/info?id=spy-x-family.6ll19"
         response = requests.get(url, params={"id": "spy-x-family.6ll19"})
         data = response.json()
 
