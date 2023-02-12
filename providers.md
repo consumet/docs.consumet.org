@@ -10,6 +10,8 @@
 - [x] Enime (needs checking over and needs servers added)
 - [x] GogoAnime
 - [x] Zoro
+- [ ] Marin
+
 
 ### Books
 
