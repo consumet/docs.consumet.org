@@ -30,14 +30,14 @@ https://api.consumet.org/anime/9anime/watch/{episodeId}?server={serverName}
         import axios from "axios";
 
         /*
-        Using the example episode ID of 'spy-x-family.6ll19/ep-1',
+        Using the example episode ID of '159332',
         explicitly defining default server for demostrative purposes.
         */
-        const url = "https://api.consumet.org/anime/9anime/watch?episodeId=spy-x-family.6ll19/ep-1&server=vidcloud"
+        const url = "https://api.consumet.org/anime/9anime/watch/1593321&server=vidcloud"
         const data = async () => {
             try {
                 const { data } = await axios.get(url, { params: {
-                    episodeId: "spy-x-family.6ll19/ep-1",
+                    episodeId: "159332",
                     server: "vidcloud"
                 } });
                 return data;
@@ -57,12 +57,12 @@ https://api.consumet.org/anime/9anime/watch/{episodeId}?server={serverName}
         import requests
 
         """
-        Using the example episode ID of 'spy-x-family.6ll19/ep-1',
+        Using the example episode ID of '159332',
         explicitly defining default server for demostrative purposes.
         """
-        url = "https://api.consumet.org/anime/9anime/watch?episodeId=spy-x-family.6ll19/ep-1&server=vidcloud"
+        url = "https://api.consumet.org/anime/9anime/watch/159332&server=vidcloud"
         response = requests.get(url, params={
-            "episodeId": "spy-x-family.6ll19/ep-1",
+            "episodeId": "159332",
             "server": "vidcloud"
         })
         data = response.json()
