@@ -29,7 +29,7 @@ http://localhost:4000/manga/mangadex/read/5f7891b4-f048-4516-9c75-7bcd6dbd1451/{
         import axios from "axios";
 
         // Using the example chapter ID of "5f7891b4-f048-4516-9c75-7bcd6dbd1451"
-        const url = "http://localhost:4000/manga/mangadex/read/5f7891b4-f048-4516-9c75-7bcd6dbd1451";
+        const url = "https://api.consumet.org/manga/mangadex/read/5f7891b4-f048-4516-9c75-7bcd6dbd1451";
         const data = async () => {
             try {
                 const { data } = await axios.get(url);
@@ -50,7 +50,7 @@ http://localhost:4000/manga/mangadex/read/5f7891b4-f048-4516-9c75-7bcd6dbd1451/{
         import requests
 
         # Using the example chapter ID of "5f7891b4-f048-4516-9c75-7bcd6dbd1451"
-        url = "http://localhost:4000/manga/mangadex/read/5f7891b4-f048-4516-9c75-7bcd6dbd1451"
+        url = "https://api.consumet.org/manga/mangadex/read/5f7891b4-f048-4516-9c75-7bcd6dbd1451"
         response = requests.get(url)
         data = response.json()
 
