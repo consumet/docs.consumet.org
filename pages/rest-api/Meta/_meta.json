@@ -1,10 +1,6 @@
 {
-  "anilist-anime": {
-    "title": "Anilist (Anime)",
-    "theme": { "collapsed": true }
-  },
-  "anilist-manga": {
-    "title": "Anilist (Manga)",
+  "anilist": {
+    "title": "Anilist",
     "theme": { "collapsed": true }
   },
   "myanimelist": {
