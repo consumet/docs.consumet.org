@@ -34,7 +34,7 @@ https://api.consumet.org/movies/viewasian/watch?episodeId={episodeId}&mediaId={m
         Using the example episode ID of '/watch/vincenzo/watching.html$episode$20',
         explicitly defining default server for demostrative purposes.
         */
-        const url = "https://api.consumet.org/movies/ViewAsian/watch";
+        const url = "https://api.consumet.org/movies/viewasian/watch";
         const data = async () => {
             try {
                 const { data } = await axios.get(url, { params: { episodeId: "/watch/vincenzo/watching.html$episode$20", mediaId: "drama/vincenzo", server: "asianload" } });
@@ -58,7 +58,7 @@ https://api.consumet.org/movies/viewasian/watch?episodeId={episodeId}&mediaId={m
         Using the example episode ID of '/watch/vincenzo/watching.html$episode$20',
         explicitly defining default server for demostrative purposes.
         """
-        url = "https://api.consumet.org/movies/ViewAsian/watch"
+        url = "https://api.consumet.org/movies/viewasian/watch"
         response = requests.get(url, params={"episodeId": "/watch/vincenzo/watching.html$episode$20", "mediaId": "drama/vincenzo", "server": "asianload"})
         data = response.json()
 
