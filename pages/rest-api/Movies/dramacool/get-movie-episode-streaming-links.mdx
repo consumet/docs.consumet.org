@@ -11,7 +11,7 @@ Technical details regarding the usage of the get anime streaming links function 
 ## Route Schema (URL)
 
 ```
-https://api.consumet.org/movies/Dramacool/watch?episodeId={episodeId}&mediaId={mediaId}&server={server}
+https://api.consumet.org/movies/dramacool/watch?episodeId={episodeId}&mediaId={mediaId}&server={server}
 ```
 
 ## Query Parameters
@@ -34,7 +34,7 @@ https://api.consumet.org/movies/Dramacool/watch?episodeId={episodeId}&mediaId={m
         Using the example episode ID of 'vincenzo-2021-episode-1',
         explicitly defining default server for demostrative purposes.
         */
-        const url = "https://api.consumet.org/movies/Dramacool/watch";
+        const url = "https://api.consumet.org/movies/dramacool/watch";
         const data = async () => {
             try {
                 const { data } = await axios.get(url, { params: { episodeId: "vincenzo-2021-episode-1", mediaId: "drama-detail/vincenzo", server: "asianload" } });
@@ -58,7 +58,7 @@ https://api.consumet.org/movies/Dramacool/watch?episodeId={episodeId}&mediaId={m
         Using the example episode ID of 'vincenzo-2021-episode-1',
         explicitly defining default server for demostrative purposes.
         """
-        url = "https://api.consumet.org/movies/Dramacool/watch"
+        url = "https://api.consumet.org/movies/dramacool/watch"
         response = requests.get(url, params={"episodeId": "vincenzo-2021-episode-1", "mediaId": "drama-detail/vincenzo", "server": "asianload"})
         data = response.json()
 
