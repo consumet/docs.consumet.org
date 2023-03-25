@@ -11,7 +11,7 @@ Technical details regarding the usage of the search function for the Dramacool p
 ## Route Schema (URL)
 
 ```
-https://api.consumet.org/movies/Dramacool/{query}?page={number}
+https://api.consumet.org/movies/dramacool/{query}?page={number}
 ```
 
 ## Path Parameters
@@ -35,7 +35,7 @@ https://api.consumet.org/movies/Dramacool/{query}?page={number}
         import axios from "axios";
 
         // Using the example query "vincenzo", and looking at the 2nd page of results.
-        const url = "https://api.consumet.org/movies/Dramacool/vincenzo";
+        const url = "https://api.consumet.org/movies/dramacool/vincenzo";
         const data = async () => {
             try {
                 const { data } = await axios.get(url, { params: { page: 1 } });
@@ -56,7 +56,7 @@ https://api.consumet.org/movies/Dramacool/{query}?page={number}
         import requests
 
         # Using the example query "vincenzo", and looking at the 2nd page of results.
-        url = "https://api.consumet.org/movies/Dramacool/vincenzo"
+        url = "https://api.consumet.org/movies/dramacool/vincenzo"
         response = requests.get(url, params={"page": 2})
         data = response.json()
 
