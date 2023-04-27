@@ -11,7 +11,7 @@ Technical details regarding the usage of the fetch news feeds function for the A
 ## Route Schema (URL)
 
 ```
-https://api.consumet.org/news/ANN/recent-feeds
+https://api.consumet.org/news/ann/recent-feeds
 ```
 
 ## Query Parameters
@@ -29,7 +29,7 @@ https://api.consumet.org/news/ANN/recent-feeds
         import axios from "axios";
 
         // Example request using no paramters, which fetches all recent news.
-        const url = "https://api.consumet.org/news/ANN/recent-feeds";
+        const url = "https://api.consumet.org/news/ann/recent-feeds";
         const data = async () => {
             try {
                 const { data } = await axios.get(url);
@@ -50,7 +50,7 @@ https://api.consumet.org/news/ANN/recent-feeds
         import requests
 
         # Example request using no paramters, which fetches all recent news.
-        url = "https://api.consumet.org/news/ANN/recent-feeds"
+        url = "https://api.consumet.org/news/ann/recent-feeds"
         response = requests.get(url)
         data = response.json()
 

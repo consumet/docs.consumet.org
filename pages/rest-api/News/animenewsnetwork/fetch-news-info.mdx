@@ -11,7 +11,7 @@ Technical details regarding the usage of the fetch news info function for the AN
 ## Route Schema (URL)
 
 ```
-https://api.consumet.org/news/ANN/info/:id
+https://api.consumet.org/news/ann/info
 ```
 
 ## Query Parameters
@@ -29,7 +29,7 @@ https://api.consumet.org/news/ANN/info/:id
         import axios from "axios";
 
         // An example news story about the Kindaichi Case Files ending.
-        const url = "https://api.consumet.org/news/ANN/info/2023-01-10/the-kindaichi-case-files-30th-anniversary-manga-ends-in-4-chapters/.193671";
+        const url = "https://api.consumet.org/news/ann/info?id=2023-04-26/kibo-no-chikara-~otona-precure-23~-anime-teaser-narrated-by-nozomi-yuko-sanpei/.197525";
         const data = async () => {
             try {
                 const { data } = await axios.get(url);
@@ -50,7 +50,7 @@ https://api.consumet.org/news/ANN/info/:id
         import requests
 
         # An example news story about the Kindaichi Case Files ending.
-        url = "https://api.consumet.org/news/ANN/info/2023-01-10/the-kindaichi-case-files-30th-anniversary-manga-ends-in-4-chapters/.193671"
+        url = "https://api.consumet.org/news/ann/info?id=2023-04-26/kibo-no-chikara-~otona-precure-23~-anime-teaser-narrated-by-nozomi-yuko-sanpei/.197525"
         response = requests.get(url)
         data = response.json()
 
