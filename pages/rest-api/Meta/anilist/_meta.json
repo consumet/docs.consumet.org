@@ -1,0 +1,10 @@
+{
+  "anime": {
+    "title": "Anime",
+    "theme": { "collapsed": true }
+  },
+  "manga": {
+    "title": "Manga",
+    "theme": { "collapsed": true }
+  }
+}
