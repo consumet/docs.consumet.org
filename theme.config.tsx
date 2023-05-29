@@ -55,7 +55,7 @@ const config: DocsThemeConfig = {
   chat: {
     link: "https://discord.gg/consumet",
   },
-  docsRepositoryBase: "https://github.com/consumet/docs.consumet.org",
+  docsRepositoryBase: "https://github.com/consumet/docs.consumet.org/tree/master",
   footer: {
     text: "Copyright (c) Consumet | 2023-present",
   },
