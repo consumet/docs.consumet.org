@@ -78,15 +78,23 @@ https://api.consumet.org/meta/anilist/recent-episodes?page={page}&perPage={perPa
   **MIME Type:** `application/json`
   ```json copy=false
   {
-  "currentPage": 1,
-  "results": [
+    "currentPage": "number",
+    "totalResults": "number",
+    "results": [
       {
         "id": "string",
-        "title": "string",
+        "malId": "string",
+        "title": {
+          "romaji": "string",
+          "english": "string",
+          "native": "string"
+        },
         "image": "string",
-        "type": "string",
-        "rating": "number",
-        "releaseDate": "string"
+        "imageHash": "string",
+        "episodeId": "string",
+        "episodeTitle": "string",
+        "episodeNumber": "number",
+        "type": "string"
       }
     ]
   }
