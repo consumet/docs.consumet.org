@@ -1,0 +1,82 @@
+---
+title: Flixhq | Trending
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Trending
+
+Technical details regarding the usage of the get trending movies function for the Flixhq provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/movies/flixhq/trending
+```
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        const url = "https://api.consumet.org/movies/flixhq/trending";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        url = "https://api.consumet.org/movies/flixhq/trending"
+        response = requests.get(url)
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "results": [
+      {
+        "id": "string",
+        "title": "string",
+        "image": "string",
+        "url": "string",
+        "releaseDate": "string", // or null
+        "duration": "string", // or null
+        "type": "Movie" // or "TV Series"
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+</Tabs>
