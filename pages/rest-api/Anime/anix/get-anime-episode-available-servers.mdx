@@ -1,0 +1,100 @@
+---
+title: Anix | Available Servers
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Anime Episode Available Servers
+
+Technical details regarding the usage of the get available servers function for the Anix provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/anime/anix/servers/{id}/{episodeId}?type={type}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                                         | Required? | Default |
+| :-------: | :----: | --------------------------------------------------- | :-------: | :-----: |
+|    id     | string | The ID of the anime which the episodeId belongs to. |    Yes    |         |
+| episodeId | string | The episodeId. Usually in the format: `ep-1`, etc.  |    Yes    |         |
+
+## Query Parameters
+
+| Parameter |              Type             | Description                       | Required? |    Default    |
+| :-------: | :---------------------------: | --------------------------------- | :-------: | :-----------: |
+|   type    | Enum: `"sub"` `"dub"` `"raw"` | The type. Either sub, dub or raw. |    No     |    `"sub"`    |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example episode ID of 'darling-in-the-franxx' with episode ID 'ep-1'.
+        const url = "https://api.consumet.org/anime/anix/servers/darling-in-the-franxx/ep-1?type=sub";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: {
+                    "type": "sub"
+                } });
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example episode ID of 'darling-in-the-franxx' with episode ID 'ep-1'.
+        url = "https://api.consumet.org/anime/anix/servers/darling-in-the-franxx/ep-1?type=sub"
+        response = requests.get(url, params={
+            "type": "sub"
+        })
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  [
+    {
+        "name": "string",
+        "url": "string"
+    }
+  ]
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  "message": {}
+  ```
+  </Tab>
+</Tabs>

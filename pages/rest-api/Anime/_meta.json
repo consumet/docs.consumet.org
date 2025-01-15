@@ -11,6 +11,10 @@
     "title": "Animepahe",
     "theme": { "collapsed": true }
   },
+  "anix": {
+    "title": "Anix",
+    "theme": { "collapsed": true }
+  },
   "bilibili": {
     "title": "BiliBili",
     "theme": { "collapsed": true }
