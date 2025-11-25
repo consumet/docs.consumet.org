@@ -16,6 +16,9 @@
     "url": "https://github.com/consumet/docs.consumet.org/issues"
   },
   "homepage": "https://github.com/consumet/docs.consumet.org/#readme",
+  "engines": {
+    "node": ">=24.x"
+  },
   "dependencies": {
     "next": "^13.0.6",
     "nextra": "2.0.1",
