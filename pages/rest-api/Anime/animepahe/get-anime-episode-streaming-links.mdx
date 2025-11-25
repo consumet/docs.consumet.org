@@ -11,14 +11,14 @@ Technical details regarding the usage of the get anime streaming links function 
 ## Route Schema (URL)
 
 ```
-https://api.consumet.org/anime/animepahe/watch/{episodeId}
+https://api.consumet.org/anime/animepahe/watch?episodeId={episodeId}
 ```
 
-## Path Parameters
+## Query Parameters
 
 | Parameter |  Type  | Description                                                       | Required? | Default |
 | :-------: | :----: | ----------------------------------------------------------------- | :-------: | :-----: |
-|   query   | string | The search query; i.e. the title of the item you are looking for. |    Yes    |  `""`   |
+|   episodeId   | string | The episode ID of the episode you want to watch. |    Yes    |  `""`   |
 
 ## Request Samples
 
@@ -31,10 +31,10 @@ https://api.consumet.org/anime/animepahe/watch/{episodeId}
         /*
         Using the example episode ID of '2242c5d8ac108a8b5d0ac16bf2db82d55d5a578b2ed2e4ca0c6ed1b5dccc3e95"',
         */
-        const url = "https://api.consumet.org/anime/animepahe/watch/2242c5d8ac108a8b5d0ac16bf2db82d55d5a578b2ed2e4ca0c6ed1b5dccc3e95";
+        const url = "https://api.consumet.org/anime/animepahe/watch";
         const data = async () => {
             try {
-                const { data } = await axios.get(url);
+                const { data } = await axios.get(url, { params: { episodeId: "2242c5d8ac108a8b5d0ac16bf2db82d55d5a578b2ed2e4ca0c6ed1b5dccc3e95" } });
                 return data;
             } catch (err) {
                 throw new Error(err.message);
@@ -54,8 +54,8 @@ https://api.consumet.org/anime/animepahe/watch/{episodeId}
         """
         Using the example episode ID of '2242c5d8ac108a8b5d0ac16bf2db82d55d5a578b2ed2e4ca0c6ed1b5dccc3e95"'
         """
-        url = "https://api.consumet.org/anime/animepahe/watch/2242c5d8ac108a8b5d0ac16bf2db82d55d5a578b2ed2e4ca0c6ed1b5dccc3e95"
-        response = requests.get(url)
+        url = "https://api.consumet.org/anime/animepahe/watch"
+        response = requests.get(url, params={"episodeId": "2242c5d8ac108a8b5d0ac16bf2db82d55d5a578b2ed2e4ca0c6ed1b5dccc3e95"})
         data = response.json()
 
         print(data)

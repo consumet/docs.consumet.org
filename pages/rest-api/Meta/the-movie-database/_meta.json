@@ -1,5 +1,6 @@
 {
   "search": "Search",
   "get-movie-info": "Get Movie Info",
-  "get-movie-episode-streaming-links": "Get Movie Episode Streaming Links"
+  "get-movie-episode-streaming-links": "Get Movie Episode Streaming Links",
+  "get-trending-movies": "Get Trending"
 }

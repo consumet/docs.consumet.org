@@ -1,0 +1,99 @@
+---
+title: animekai | Search Suggestions
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Search Suggestions
+
+Technical details regarding the usage of the get search suggestions function for the animekai provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/anime/animekai/search-suggestions/{query}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                                                | Required? | Default |
+| :-------: | :----: | ---------------------------------------------------------- | :-------: | :-----: |
+|   query   | string | The search query to get suggestions for.                   |    Yes    |  `""`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example query "demon".
+        const url = "https://api.consumet.org/anime/animekai/search-suggestions/demon";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example query "demon".
+        url = "https://api.consumet.org/anime/animekai/search-suggestions/demon"
+        response = requests.get(url)
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "results": [
+      {
+        "id": "string",
+        "title": "string",
+        "url": "string",
+        "image": "string",
+        "releaseDate": "string"
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "query is required"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Contact developer for help."
+  }
+  ```
+  </Tab>
+</Tabs>

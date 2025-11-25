@@ -1,0 +1,84 @@
+---
+title: hianime | Spotlight
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Spotlight
+
+Technical details regarding the usage of the spotlight function for the hianime provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/anime/hianime/spotlight
+```
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        const url = "https://api.consumet.org/anime/hianime/spotlight";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        url = "https://api.consumet.org/anime/hianime/spotlight"
+        response = requests.get(url)
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "spotlightAnimes": [
+      {
+        "id": "string",
+        "title": "string",
+        "url": "string",
+        "image": "string",
+        "description": "string",
+        "rank": 0
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Contact developer for help."
+  }
+  ```
+  </Tab>
+</Tabs>

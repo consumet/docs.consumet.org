@@ -8,5 +8,10 @@
   "get-trending-anime": "Get Trending Anime",
   "get-popular-anime": "Get Popular Anime",
   "get-airing-schedule": "Get Airing Schedule",
-  "get-random-anime": "Get Random Anime"
+  "get-random-anime": "Get Random Anime",
+  "get-anilist-data": "Get Anilist Data",
+  "get-episodes": "Get Episodes",
+  "get-episode-servers": "Get Episode Servers",
+  "get-character-info": "Get Character Info",
+  "get-staff-info": "Get Staff Info"
 }

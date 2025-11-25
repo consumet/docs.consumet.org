@@ -1,0 +1,92 @@
+---
+title: animekai | New Releases
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get New Releases
+
+Technical details regarding the usage of the get new releases function for the animekai provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/anime/animekai/new-releases
+```
+
+## Query Parameters
+
+| Parameter |  Type   | Description                           | Required? | Default |
+| :-------: | :-----: | ------------------------------------- | :-------: | :-----: |
+|   page    | integer | The page number of results to return. |    No     |   `1`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        const url = "https://api.consumet.org/anime/animekai/new-releases";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { page: 1 } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        url = "https://api.consumet.org/anime/animekai/new-releases"
+        response = requests.get(url, params={"page": 1})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "currentPage": 1,
+    "hasNextPage": true,
+    "results": [
+      {
+        "id": "string",
+        "title": "string",
+        "url": "string",
+        "image": "string",
+        "releaseDate": "string",
+        "subOrDub": "sub"
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Contact developer for help."
+  }
+  ```
+  </Tab>
+</Tabs>

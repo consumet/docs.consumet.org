@@ -1,0 +1,69 @@
+---
+title: GetComics | Welcome
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Welcome
+
+This endpoint provides general information about the GetComics provider and lists available routes.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/comics/getcomics
+```
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        const url = "https://api.consumet.org/comics/getcomics";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        url = "https://api.consumet.org/comics/getcomics"
+        response = requests.get(url)
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "intro": "Welcome to the getComics provider: check out the provider's website @ https://getcomics.info/",
+    "routes": ["/s"],
+    "documentation": "https://docs.consumet.org/#tag/getComics"
+  }
+  ```
+  </Tab>
+</Tabs>

@@ -1,34 +1,26 @@
 {
-  "9anime": {
-    "title": "9Anime",
-    "theme": { "collapsed": true }
-  },
-  "animefox": {
-    "title": "AnimeFox",
+  "animekai": {
+    "title": "AnimeKai",
     "theme": { "collapsed": true }
   },
   "animepahe": {
     "title": "Animepahe",
     "theme": { "collapsed": true }
   },
-  "bilibili": {
-    "title": "BiliBili",
+  "animesaturn": {
+    "title": "AnimeSaturn",
     "theme": { "collapsed": true }
   },
-  "crunchyroll": {
-    "title": "Crunchyroll",
+  "animeunity": {
+    "title": "AnimeUnity",
     "theme": { "collapsed": true }
   },
-  "enime": {
-    "title": "Enime",
+  "hianime": {
+    "title": "HiAnime",
     "theme": { "collapsed": true }
   },
-  "gogoanime": {
-    "title": "GogoAnime",
-    "theme": { "collapsed": true }
-  },
-  "zoro": {
-    "title": "Zoro",
+  "kickassanime": {
+    "title": "KickAssAnime",
     "theme": { "collapsed": true }
   }
 }

@@ -2,4 +2,106 @@
 title: Read Light Novels | Search
 ---
 
+import { Tab, Tabs } from "nextra-theme-docs";
+
 # Search
+
+Technical details regarding the usage of the search function for the Read Light Novels provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/light-novels/readlightnovels/{query}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                                                       | Required? | Default |
+| :-------: | :----: | ----------------------------------------------------------------- | :-------: | :-----: |
+|   query   | string | The search query; i.e. the title of the light novel you are looking for. |    Yes    |  `""`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example query "solo leveling".
+        const url = "https://api.consumet.org/light-novels/readlightnovels/solo%20leveling";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example query "solo leveling".
+        url = "https://api.consumet.org/light-novels/readlightnovels/solo%20leveling"
+        response = requests.get(url)
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "results": [
+      {
+        "id": "string",
+        "title": "string",
+        "url": "string",
+        "image": "string",
+        "author": "string"
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "query is required"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Not found"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Please try again later."
+  }
+  ```
+  </Tab>
+</Tabs>

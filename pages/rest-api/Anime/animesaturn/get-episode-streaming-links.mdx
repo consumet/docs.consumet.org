@@ -1,0 +1,95 @@
+---
+title: animesaturn | Streaming Links
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Episode Streaming Links
+
+Technical details regarding the usage of the get episode streaming links function for the animesaturn provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/anime/animesaturn/watch/{episodeId}
+```
+
+## Path Parameters
+
+| Parameter  |  Type  | Description                                       | Required? | Default |
+| :--------: | :----: | ------------------------------------------------- | :-------: | :-----: |
+| episodeId  | string | The episode ID of the episode you want to watch. |    Yes    |  `""`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example episode ID of "naruto-episodio-1".
+        const url = "https://api.consumet.org/anime/animesaturn/watch/naruto-episodio-1";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example episode ID of "naruto-episodio-1".
+        url = "https://api.consumet.org/anime/animesaturn/watch/naruto-episodio-1"
+        response = requests.get(url)
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "headers": {},
+    "sources": [
+      {
+        "url": "string",
+        "isM3U8": true
+      }
+    ],
+    "subtitles": [
+      {
+        "url": "string",
+        "lang": "string"
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Contact developer for help."
+  }
+  ```
+  </Tab>
+</Tabs>

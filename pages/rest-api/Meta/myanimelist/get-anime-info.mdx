@@ -1,0 +1,155 @@
+---
+title: MyAnimeList | Info
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Info
+
+Technical details regarding the usage of the get anime info function for the MyAnimeList provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/meta/mal/info/{id}?provider={provider}&dub={dub}&fetchFiller={fetchFiller}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description          | Required? | Default |
+| :-------: | :----: | -------------------- | :-------: | :-----: |
+|    id     | string | The MyAnimeList id   |    Yes    |  `N/A`  |
+
+## Query Parameters
+
+| Parameter    |  Type   | Description                                                                                                             | Required? |  Default   |
+| :----------: | :-----: | ----------------------------------------------------------------------------------------------------------------------- | :-------: | :--------: |
+|   provider   | string  | The provider you want to use. Enum: `9anime`, `animefox`, `animepahe`, `bilibili`, `crunchyroll`, `enime`, `gogoanime`, `marin`, `zoro` |    No     |   `N/A`    |
+|     dub      | boolean | Whether to fetch the dub version or sub version                                                                          |    No     |  `false`   |
+|  fetchFiller | boolean | Whether to fetch filler information or not                                                                               |    No     |  `false`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example id of "16498" (Jujutsu Kaisen)
+        const url = "https://api.consumet.org/meta/mal/info/16498";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { provider: "gogoanime", dub: false } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example id of "16498" (Jujutsu Kaisen)
+        url = "https://api.consumet.org/meta/mal/info/16498"
+        response = requests.get(url, params={"provider": "gogoanime", "dub": False})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+      "id": "string",
+      "title": "string[]",
+      "malId": "integer",
+      "trailer": {
+        "id": "string",
+        "site": "string",
+        "thumbnail": "string"
+      },
+      "image": "string",
+      "popularity": "number",
+      "color": "string",
+      "description": "string",
+      "status": "string",
+      "releaseDate": "integer",
+      "startDate": {
+        "year": "number",
+        "month": "number",
+        "day": "number"
+      },
+      "endDate": {
+        "year": "number",
+        "month": "number",
+        "day": "number"
+      },
+      "rating": "integer",
+      "genres": "string[]",
+      "season": "string",
+      "studios": "string[]",
+      "type": "string",
+      "recommendations": {
+        "id": "string",
+        "malId": "string",
+        "title": "string[]",
+        "status": "string",
+        "episodes": "number",
+        "image": "string",
+        "cover": "string",
+        "rating": "number",
+        "type": "string"
+      },
+      "characters": {
+        "id": "string",
+        "role": "string",
+        "name": "string[]",
+        "image": "string"
+      },
+      "relations": {
+        "id": "integer",
+        "relationType": "string",
+        "malId": "integer",
+        "title": "string[]",
+        "status": "string",
+        "episodes": "integer",
+        "image": "string",
+        "color": "string",
+        "type": "string",
+        "cover": "string",
+        "rating": "integer"
+      },
+      "episodes": {
+        "id": "string",
+        "title": "string",
+        "episode": "string"
+      }
+  }
+  ```
+  </Tab>
+
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  }
+  ```
+  </Tab>
+</Tabs>

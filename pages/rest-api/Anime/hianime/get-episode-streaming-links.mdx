@@ -1,0 +1,109 @@
+---
+title: hianime | Streaming Links
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Episode Streaming Links
+
+Technical details regarding the usage of the get episode streaming links function for the hianime provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/anime/hianime/watch/{episodeId}
+```
+
+## Path Parameters
+
+| Parameter  |  Type  | Description                                       | Required? | Default |
+| :--------: | :----: | ------------------------------------------------- | :-------: | :-----: |
+| episodeId  | string | The episode ID of the episode you want to watch. |    Yes    |  `""`   |
+
+## Query Parameters
+
+| Parameter |  Type  | Description                                                    | Required? | Default |
+| :-------: | :----: | ------------------------------------------------------------- | :-------: | :-----: |
+|  server   | string | The streaming server to use (e.g., "vidstreaming", "vidcloud"). |    No     |  `""`   |
+| category  | string | The category type: "sub" for subbed, "dub" for dubbed.        |    No     |  `""`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example episode ID of "one-piece-100?ep=1234".
+        const url = "https://api.consumet.org/anime/hianime/watch/one-piece-100?ep=1234";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { server: "vidstreaming", category: "sub" } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example episode ID of "one-piece-100?ep=1234".
+        url = "https://api.consumet.org/anime/hianime/watch/one-piece-100?ep=1234"
+        response = requests.get(url, params={"server": "vidstreaming", "category": "sub"})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "headers": {
+      "Referer": "string",
+      "User-Agent": "string"
+    },
+    "sources": [
+      {
+        "url": "string",
+        "quality": "string",
+        "isM3U8": true
+      }
+    ],
+    "download": "string"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "episodeId is required"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Contact developer for help."
+  }
+  ```
+  </Tab>
+</Tabs>

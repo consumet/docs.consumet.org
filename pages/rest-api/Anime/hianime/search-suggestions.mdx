@@ -1,0 +1,92 @@
+---
+title: hianime | Search Suggestions
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Search Suggestions
+
+Technical details regarding the usage of the search suggestions function for the hianime provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/anime/hianime/search-suggestions/{query}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                                  | Required? | Default |
+| :-------: | :----: | -------------------------------------------- | :-------: | :-----: |
+|   query   | string | The search query to get suggestions for.     |    Yes    |  `""`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example query "one piece".
+        const url = "https://api.consumet.org/anime/hianime/search-suggestions/one%20piece";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example query "one piece".
+        url = "https://api.consumet.org/anime/hianime/search-suggestions/one%20piece"
+        response = requests.get(url)
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "suggestions": [
+      {
+        "id": "string",
+        "title": "string",
+        "image": "string",
+        "url": "string",
+        "releaseDate": "string",
+        "subOrDub": "sub"
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Contact developer for help."
+  }
+  ```
+  </Tab>
+</Tabs>

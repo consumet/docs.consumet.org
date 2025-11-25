@@ -1,1 +1,5 @@
-{ "get-comic-info": "Get Comic Info" }
+{
+  "welcome": "Welcome",
+  "search": "Search",
+  "get-comic-info": "Get Comic Info"
+}

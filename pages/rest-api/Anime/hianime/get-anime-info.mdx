@@ -1,0 +1,109 @@
+---
+title: hianime | Anime Info
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Anime Info
+
+Technical details regarding the usage of the get anime info function for the hianime provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/anime/hianime/info?id={id}
+```
+
+## Query Parameters
+
+| Parameter |  Type  | Description                                                                                         | Required? | Default |
+| :-------: | :----: | --------------------------------------------------------------------------------------------------- | :-------: | :-----: |
+|    id     | string | The hianime ID of the anime; i.e. provided by searching for said anime and selecting the correct one. |    Yes    |  `""`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example ID of "one-piece-100".
+        const url = "https://api.consumet.org/anime/hianime/info";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { id: "one-piece-100" } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example ID of "one-piece-100".
+        url = "https://api.consumet.org/anime/hianime/info"
+        response = requests.get(url, params={"id": "one-piece-100"})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "id": "string",
+    "title": "string",
+    "url": "string",
+    "image": "string",
+    "description": "string",
+    "genres": ["string"],
+    "subOrDub": "sub",
+    "type": "string",
+    "status": "string",
+    "otherName": "string",
+    "totalEpisodes": 0,
+    "episodes": [
+      {
+        "id": "string",
+        "number": 0,
+        "title": "string",
+        "url": "string"
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "id is required"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Contact developer for help."
+  }
+  ```
+  </Tab>
+</Tabs>

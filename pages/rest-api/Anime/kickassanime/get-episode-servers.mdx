@@ -1,0 +1,104 @@
+---
+title: KickAssAnime | Episode Servers
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Episode Servers
+
+Technical details regarding the usage of the get episode servers function for the KickAssAnime provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/anime/kickassanime/servers?episodeId={episodeId}
+```
+
+## Query Parameters
+
+| Parameter  |  Type  | Description                                                                                         | Required? | Default |
+| :--------: | :----: | --------------------------------------------------------------------------------------------------- | :-------: | :-----: |
+| episodeId  | string | The episode ID/path of the episode (e.g., "naruto-f3cf/episode/ep-1-12cd96"). |    Yes    |  `""`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example episode ID of "naruto-f3cf/episode/ep-1-12cd96".
+        const url = "https://api.consumet.org/anime/kickassanime/servers";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, {
+                    params: { episodeId: "naruto-f3cf/episode/ep-1-12cd96" }
+                });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example episode ID of "naruto-f3cf/episode/ep-1-12cd96".
+        url = "https://api.consumet.org/anime/kickassanime/servers"
+        response = requests.get(url, params={"episodeId": "naruto-f3cf/episode/ep-1-12cd96"})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  [
+    {
+      "name": "VidStreaming",
+      "url": "string"
+    },
+    {
+      "name": "BirdStream",
+      "url": "string"
+    },
+    {
+      "name": "DuckStream",
+      "url": "string"
+    }
+  ]
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "episodeId is required"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Contact developer for help."
+  }
+  ```
+  </Tab>
+</Tabs>

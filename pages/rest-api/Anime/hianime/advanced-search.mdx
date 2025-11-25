@@ -1,0 +1,118 @@
+---
+title: hianime | Advanced Search
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Advanced Search
+
+Technical details regarding the usage of the advanced search function for the hianime provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/anime/hianime/advanced-search
+```
+
+## Query Parameters
+
+| Parameter  |  Type   | Description                                                      | Required? | Default |
+| :--------: | :-----: | ---------------------------------------------------------------- | :-------: | :-----: |
+|    page    | integer | The page number of results to return.                            |    No     |   `1`   |
+|    type    | string  | The type of anime (e.g., "movie", "tv", "ova", "ona", "special"). |    No     |  `""`   |
+|   status   | string  | The status of anime (e.g., "currently-airing", "finished-airing"). |    No     |  `""`   |
+|   rated    | string  | The age rating (e.g., "r", "pg-13", "pg").                       |    No     |  `""`   |
+|   score    | number  | The minimum score rating.                                        |    No     |  `""`   |
+|   season   | string  | The season (e.g., "spring", "summer", "fall", "winter").          |    No     |  `""`   |
+|  language  | string  | The language type (e.g., "sub", "dub").                          |    No     |  `""`   |
+| startDate  | string  | Start date in YYYY-MM-DD format.                                 |    No     |  `""`   |
+|  endDate   | string  | End date in YYYY-MM-DD format.                                   |    No     |  `""`   |
+|    sort    | string  | Sort order (e.g., "recently-added", "most-popular").             |    No     |  `""`   |
+|   genres   | string  | Comma-separated list of genre names.                             |    No     |  `""`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        const url = "https://api.consumet.org/anime/hianime/advanced-search";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, {
+                    params: {
+                        page: 1,
+                        type: "tv",
+                        status: "currently-airing",
+                        season: "fall",
+                        genres: "action,adventure"
+                    }
+                });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        url = "https://api.consumet.org/anime/hianime/advanced-search"
+        params = {
+            "page": 1,
+            "type": "tv",
+            "status": "currently-airing",
+            "season": "fall",
+            "genres": "action,adventure"
+        }
+        response = requests.get(url, params=params)
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "currentPage": 1,
+    "hasNextPage": true,
+    "totalPages": 10,
+    "results": [
+      {
+        "id": "string",
+        "title": "string",
+        "url": "string",
+        "image": "string",
+        "releaseDate": "string",
+        "subOrDub": "sub"
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Contact developer for help."
+  }
+  ```
+  </Tab>
+</Tabs>

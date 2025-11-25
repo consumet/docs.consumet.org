@@ -1,5 +1,105 @@
 ---
-title: Read Light Novels | Light Novel Chapter
+title: Read Light Novels | Get Light Novel Chapter
 ---
 
+import { Tab, Tabs } from "nextra-theme-docs";
+
 # Get Light Novel Chapter
+
+Technical details regarding the usage of the get light novel chapter function for the Read Light Novels provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/light-novels/readlightnovels/read
+```
+
+## Query Parameters
+
+| Parameter |  Type  | Description                                                       | Required? | Default |
+| :-------: | :----: | ----------------------------------------------------------------- | :-------: | :-----: |
+| chapterId | string | The id of the chapter to fetch content from.                      |    Yes    |    -    |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        const url = "https://api.consumet.org/light-novels/readlightnovels/read";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, {
+                    params: {
+                        chapterId: "solo-leveling-chapter-1"
+                    }
+                });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        url = "https://api.consumet.org/light-novels/readlightnovels/read"
+        response = requests.get(url, params={
+            "chapterId": "solo-leveling-chapter-1"
+        })
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "chapterId": "string",
+    "chapterTitle": "string",
+    "content": "string"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "chapterId is required"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Not found"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Please try again later."
+  }
+  ```
+  </Tab>
+</Tabs>

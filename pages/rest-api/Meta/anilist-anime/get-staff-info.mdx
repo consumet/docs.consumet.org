@@ -1,0 +1,125 @@
+---
+title: Anilist (Anime) | Staff Info
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Staff Info
+
+Technical details regarding the usage of the get staff info function for the Anilist Anime provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/meta/anilist/staff/{id}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                    | Required? | Default |
+| :-------: | :----: | ------------------------------ | :-------: | :-----: |
+|    id     | string | The ID of the staff member     |    Yes    |   N/A   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        /*
+        Using the example staff ID of '95095' (Junichi Suwabe),
+        */
+        const url = "https://api.consumet.org/meta/anilist/staff/95095";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        """
+        Using the example staff ID of '95095' (Junichi Suwabe),
+        """
+        url = "https://api.consumet.org/meta/anilist/staff/95095"
+        response = requests.get(url)
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "404 Not Found"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+      "id": "string",
+      "name": {
+        "first": "string",
+        "last": "string",
+        "full": "string",
+        "native": "string",
+        "alternative": "string[]"
+      },
+      "image": "string",
+      "description": "string",
+      "primaryOccupations": "string[]",
+      "gender": "string",
+      "dateOfBirth": {
+        "year": "number",
+        "month": "number",
+        "day": "number"
+      },
+      "dateOfDeath": {
+        "year": "number",
+        "month": "number",
+        "day": "number"
+      },
+      "age": "number",
+      "yearsActive": "number[]",
+      "homeTown": "string",
+      "bloodType": "string",
+      "isFavourite": "boolean",
+      "characters": {
+        "id": "string",
+        "role": "string",
+        "name": "string[]",
+        "image": "string"
+      },
+      "staff": {
+        "id": "string",
+        "role": "string",
+        "name": "string[]",
+        "image": "string"
+      }
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  }
+  ```
+  </Tab>
+</Tabs>

@@ -11,7 +11,7 @@ Technical details regarding the usage of the search function for the animepahe p
 ## Route Schema (URL)
 
 ```
-https://api.consumet.org/anime/animepahe/{query}?page={number}
+https://api.consumet.org/anime/animepahe/{query}
 ```
 
 ## Path Parameters
@@ -19,12 +19,6 @@ https://api.consumet.org/anime/animepahe/{query}?page={number}
 | Parameter |  Type  | Description                                                       | Required? | Default |
 | :-------: | :----: | ----------------------------------------------------------------- | :-------: | :-----: |
 |   query   | string | The search query; i.e. the title of the item you are looking for. |    Yes    |  `""`   |
-
-## Query Parameters
-
-| Parameter |  Type   | Description                           | Required? | Default |
-| :-------: | :-----: | ------------------------------------- | :-------: | :-----: |
-|   page    | integer | The page number of results to return. |    No     |   `1`   |
 
 ## Request Samples
 
@@ -34,11 +28,11 @@ https://api.consumet.org/anime/animepahe/{query}?page={number}
         ```js
         import axios from "axios";
 
-        // Using the example query "demon", and looking at the 1st page of results.
-        const url = "https://api.consumet.org/anime/animepahe/demon?page=1";
+        // Using the example query "demon".
+        const url = "https://api.consumet.org/anime/animepahe/demon";
         const data = async () => {
             try {
-                const { data } = await axios.get(url, { params: { page: 1 } });
+                const { data } = await axios.get(url);
                 return data;
             } catch (err) {
                 throw new Error(err.message);
@@ -55,9 +49,9 @@ https://api.consumet.org/anime/animepahe/{query}?page={number}
         ```python
         import requests
 
-        # Using the example query "demon", and looking at the 1st page of results.
+        # Using the example query "demon".
         url = "https://api.consumet.org/anime/animepahe/demon"
-        response = requests.get(url, params={"page": 1})
+        response = requests.get(url)
         data = response.json()
 
         print(data)

@@ -1,0 +1,102 @@
+---
+title: GetComics | Search
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Search
+
+Technical details regarding the usage of the search function for the GetComics provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/comics/getcomics/s
+```
+
+## Query Parameters
+
+| Parameter |  Type   | Description                                                       | Required? | Default |
+| :-------: | :-----: | ----------------------------------------------------------------- | :-------: | :-----: |
+| comicTitle | string | The title of the comic you are looking for (minimum 4 characters). |    Yes    |  `""`   |
+|   page    | integer | The page number of results to return.                             |    No     |   `1`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example query "spider man".
+        const url = "https://api.consumet.org/comics/getcomics/s";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { comicTitle: "spider man", page: 1 } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example query "spider man".
+        url = "https://api.consumet.org/comics/getcomics/s"
+        response = requests.get(url, params={"comicTitle": "spider man", "page": 1})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "results": [
+      {
+        "id": "string",
+        "title": "string",
+        "image": "string",
+        "url": "string"
+      }
+    ],
+    "currentPage": 1,
+    "hasNextPage": true
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "length of comicTitle must be > 4 characters",
+    "error": "short_length"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Please try again later."
+  }
+  ```
+  </Tab>
+</Tabs>

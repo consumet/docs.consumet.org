@@ -1,0 +1,116 @@
+---
+title: KickAssAnime | Streaming Links
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Episode Streaming Links
+
+Technical details regarding the usage of the get episode streaming links function for the KickAssAnime provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/anime/kickassanime/watch?episodeId={episodeId}
+```
+
+## Query Parameters
+
+| Parameter  |  Type  | Description                                                                                         | Required? | Default |
+| :--------: | :----: | --------------------------------------------------------------------------------------------------- | :-------: | :-----: |
+| episodeId  | string | The episode ID/path of the episode you want to watch (e.g., "naruto-f3cf/episode/ep-1-12cd96"). |    Yes    |  `""`   |
+|  server    | string | The streaming server to use (e.g., "VidStreaming", "BirdStream", "DuckStream", "CatStream"). |    No     |  `""`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example episode ID of "naruto-f3cf/episode/ep-1-12cd96".
+        const url = "https://api.consumet.org/anime/kickassanime/watch";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, {
+                    params: {
+                        episodeId: "naruto-f3cf/episode/ep-1-12cd96",
+                        server: "VidStreaming"
+                    }
+                });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example episode ID of "naruto-f3cf/episode/ep-1-12cd96".
+        url = "https://api.consumet.org/anime/kickassanime/watch"
+        response = requests.get(url, params={
+            "episodeId": "naruto-f3cf/episode/ep-1-12cd96",
+            "server": "VidStreaming"
+        })
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "sources": [
+      {
+        "url": "string",
+        "quality": "1080p",
+        "isM3U8": true
+      }
+    ],
+    "subtitles": [
+      {
+        "url": "string",
+        "lang": "English"
+      }
+    ],
+    "headers": {
+      "Referer": "string",
+      "User-Agent": "string"
+    }
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "episodeId is required"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Contact developer for help."
+  }
+  ```
+  </Tab>
+</Tabs>

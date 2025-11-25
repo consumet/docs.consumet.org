@@ -1,0 +1,108 @@
+---
+title: animekai | Episode Servers
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Episode Servers
+
+Technical details regarding the usage of the get episode servers function for the animekai provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/anime/animekai/servers/{episodeId}
+```
+
+## Path Parameters
+
+| Parameter  |  Type  | Description                                                     | Required? | Default |
+| :--------: | :----: | --------------------------------------------------------------- | :-------: | :-----: |
+| episodeId  | string | The episode ID of the episode to get available servers for.    |    Yes    |  `""`   |
+
+## Query Parameters
+
+| Parameter |  Type   | Description                                   | Required? | Default |
+| :-------: | :-----: | --------------------------------------------- | :-------: | :-----: |
+|   dub     | boolean | Set to true for dubbed, false for subbed.     |    No     | `false` |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example episode ID of "naruto-shippuden-1-episode-1".
+        const url = "https://api.consumet.org/anime/animekai/servers/naruto-shippuden-1-episode-1";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { dub: false } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example episode ID of "naruto-shippuden-1-episode-1".
+        url = "https://api.consumet.org/anime/animekai/servers/naruto-shippuden-1-episode-1"
+        response = requests.get(url, params={"dub": False})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  [
+    {
+      "name": "string",
+      "url": "string"
+    }
+  ]
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "id is required"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Error message"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Contact developer for help."
+  }
+  ```
+  </Tab>
+</Tabs>

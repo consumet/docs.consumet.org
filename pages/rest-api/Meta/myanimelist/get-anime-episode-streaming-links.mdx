@@ -1,0 +1,109 @@
+---
+title: MyAnimeList | Streaming Links
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Anime Episode Streaming Links
+
+Technical details regarding the usage of the get anime streaming links function for the MyAnimeList meta provider can be found below.
+Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/meta/mal/watch/{episodeId}?provider={provider}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                    | Required? | Default |
+| :-------: | :----: | ------------------------------ | :-------: | :-----: |
+| episodeId | string | The ID of the selected episode |    Yes    |   N/A   |
+
+## Query Parameters
+
+| Parameter |  Type  | Description                                                                                                             | Required? | Default |
+| :-------: | :----: | ----------------------------------------------------------------------------------------------------------------------- | :-------: | :-----: |
+| provider  | string | The provider you want to use. Enum: `9anime`, `animefox`, `animepahe`, `bilibili`, `crunchyroll`, `enime`, `gogoanime`, `marin`, `zoro` |    No     |  `N/A`  |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        /*
+        Using the example episode ID of  'jujutsu-kaisen-episode-1',
+        */
+        const url = "https://api.consumet.org/meta/mal/watch/jujutsu-kaisen-episode-1";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        """
+        Using the example episode ID of 'jujutsu-kaisen-episode-1',
+        """
+        url = "https://api.consumet.org/meta/mal/watch/jujutsu-kaisen-episode-1"
+        response = requests.get(url)
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+      "sources": [
+        {
+          "url": "string",
+          "quality": "string",
+          "isM3U8": "boolean"
+        }
+      ],
+      "download": "string"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  }
+  ```
+  </Tab>
+</Tabs>

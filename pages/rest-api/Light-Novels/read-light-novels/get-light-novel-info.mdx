@@ -1,5 +1,119 @@
 ---
-title: Read Light Novels | Light Novel Info
+title: Read Light Novels | Get Light Novel Info
 ---
 
+import { Tab, Tabs } from "nextra-theme-docs";
+
 # Get Light Novel Info
+
+Technical details regarding the usage of the get light novel info function for the Read Light Novels provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/light-novels/readlightnovels/info
+```
+
+## Query Parameters
+
+| Parameter |  Type   | Description                                                       | Required? | Default |
+| :-------: | :-----: | ----------------------------------------------------------------- | :-------: | :-----: |
+|    id     | string  | The id of the light novel.                                        |    Yes    |    -    |
+| chapterPage | integer | The page number of chapters to return.                           |    No     |   `1`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        const url = "https://api.consumet.org/light-novels/readlightnovels/info";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, {
+                    params: {
+                        id: "solo-leveling-1597",
+                        chapterPage: 1
+                    }
+                });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        url = "https://api.consumet.org/light-novels/readlightnovels/info"
+        response = requests.get(url, params={
+            "id": "solo-leveling-1597",
+            "chapterPage": 1
+        })
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "404 Not Found", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "id": "string",
+    "title": "string",
+    "cover": "string",
+    "author": "string",
+    "description": "string",
+    "genres": ["string"],
+    "status": "string",
+    "chapters": [
+      {
+        "id": "string",
+        "title": "string",
+        "releaseDate": "string"
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "id is required"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Not found"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Please try again later."
+  }
+  ```
+  </Tab>
+</Tabs>

@@ -1,0 +1,98 @@
+---
+title: Anilist (Anime) | Character Info
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Character Info
+
+Technical details regarding the usage of the get character info function for the Anilist Anime provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/meta/anilist/character/{id}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                | Required? | Default |
+| :-------: | :----: | -------------------------- | :-------: | :-----: |
+|    id     | string | The anilist character id   |    Yes    |  `N/A`  |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example character id of "5"
+        const url = "https://api.consumet.org/meta/anilist/character/5";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example character id of "5"
+        url = "https://api.consumet.org/meta/anilist/character/5"
+        response = requests.get(url)
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+      "id": "string",
+      "name": {
+        "first": "string",
+        "last": "string",
+        "full": "string",
+        "native": "string",
+        "userPreferred": "string"
+      },
+      "image": "string",
+      "description": "string",
+      "gender": "string",
+      "dateOfBirth": {
+        "year": "number",
+        "month": "number",
+        "day": "number"
+      },
+      "bloodType": "string",
+      "appearances": "string[]",
+      "relations": {
+        "id": "string",
+        "role": "string",
+        "name": "string",
+        "image": "string"
+      }
+  }
+  ```
+  </Tab>
+</Tabs>

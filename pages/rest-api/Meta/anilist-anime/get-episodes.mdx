@@ -1,0 +1,104 @@
+---
+title: Anilist (Anime) | Get Episodes
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Episodes
+
+Technical details regarding the usage of the get episodes function for the Anilist Anime provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/meta/anilist/episodes/{id}?provider={provider}&dub={dub}&fetchFiller={fetchFiller}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description         | Required? | Default |
+| :-------: | :----: | ------------------- | :-------: | :-----: |
+|    id     | string | The anilist info id |    Yes    |  `N/A`  |
+
+## Query Parameters
+
+| Parameter    |  Type   | Description                                                                                                             | Required? |  Default   |
+| :----------: | :-----: | ----------------------------------------------------------------------------------------------------------------------- | :-------: | :--------: |
+|   provider   | string  | The provider you want to use. Enum: `9anime`, `animefox`, `animepahe`, `bilibili`, `crunchyroll`, `enime`, `gogoanime`, `marin`, `zoro` |    No     |   `zoro`   |
+|     dub      | boolean | Whether to fetch the dub version or sub version                                                                          |    No     |  `false`   |
+|  fetchFiller | boolean | Whether to fetch filler information or not                                                                               |    No     |  `false`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example id of "21" (one piece)
+        const url = "https://api.consumet.org/meta/anilist/episodes/21";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { provider: "zoro", dub: false, fetchFiller: true } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example id of "21" (one piece)
+        url = "https://api.consumet.org/meta/anilist/episodes/21"
+        response = requests.get(url, params={"provider": "zoro", "dub": False, "fetchFiller": True})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "404 Not Found"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "id": "string",
+    "totalEpisodes": "number",
+    "episodes": [
+      {
+        "id": "string",
+        "number": "number",
+        "title": "string",
+        "description": "string",
+        "url": "string",
+        "image": "string",
+        "airDate": "string",
+        "isFiller": "boolean"
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  }
+  ```
+  </Tab>
+</Tabs>

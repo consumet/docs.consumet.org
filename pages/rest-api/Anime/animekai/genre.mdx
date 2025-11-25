@@ -1,0 +1,108 @@
+---
+title: animekai | Search by Genre
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Search by Genre
+
+Technical details regarding the usage of the search by genre function for the animekai provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/anime/animekai/genre/{genre}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                                                       | Required? | Default |
+| :-------: | :----: | ----------------------------------------------------------------- | :-------: | :-----: |
+|   genre   | string | The genre to search for (e.g., "action", "comedy", "drama").     |    Yes    |  `""`   |
+
+## Query Parameters
+
+| Parameter |  Type   | Description                           | Required? | Default |
+| :-------: | :-----: | ------------------------------------- | :-------: | :-----: |
+|   page    | integer | The page number of results to return. |    No     |   `1`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example genre "action".
+        const url = "https://api.consumet.org/anime/animekai/genre/action";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { page: 1 } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example genre "action".
+        url = "https://api.consumet.org/anime/animekai/genre/action"
+        response = requests.get(url, params={"page": 1})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "currentPage": 1,
+    "hasNextPage": true,
+    "results": [
+      {
+        "id": "string",
+        "title": "string",
+        "url": "string",
+        "image": "string",
+        "releaseDate": "string",
+        "subOrDub": "sub"
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "genre is required"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Contact developer for help."
+  }
+  ```
+  </Tab>
+</Tabs>
