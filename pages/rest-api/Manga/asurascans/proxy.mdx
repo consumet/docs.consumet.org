@@ -1,0 +1,105 @@
+---
+title: asurascans | Image Proxy
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Image Proxy
+
+Technical details regarding the usage of the image proxy function for the AsuraScans provider can be found below. This endpoint is used to bypass CORS and hotlink protection when loading manga images. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/manga/asurascans/proxy?url={url}
+```
+
+## Query Parameters
+
+| Parameter |  Type  | Description                                               | Required? | Default |
+| :-------: | :----: | --------------------------------------------------------- | :-------: | :-----: |
+|    url    | string | The image URL to proxy (must be a valid AsuraScans image) |    Yes    |         |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example image URL
+        const imageUrl = "https://gg.asuracomic.net/storage/media/123/example.jpg";
+        const url = `https://api.consumet.org/manga/asurascans/proxy?url=${encodeURIComponent(imageUrl)}`;
+        
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { responseType: 'arraybuffer' });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+        from urllib.parse import quote
+
+        # Using the example image URL
+        image_url = "https://gg.asuracomic.net/storage/media/123/example.jpg"
+        url = f"https://api.consumet.org/manga/asurascans/proxy?url={quote(image_url, safe='')}"
+        response = requests.get(url)
+        image_data = response.content
+
+        # Save the image
+        with open("image.jpg", "wb") as f:
+            f.write(image_data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Usage in HTML
+
+You can also use the proxy URL directly in an `<img>` tag:
+
+```html
+<img src="https://api.consumet.org/manga/asurascans/proxy?url=https%3A%2F%2Fgg.asuracomic.net%2Fstorage%2Fmedia%2F123%2Fexample.jpg" alt="Manga Page" />
+```
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `image/jpeg` (or appropriate image type)
+  
+  Returns the raw image binary data with appropriate headers:
+  - `Content-Type`: The original image content type
+  - `Cache-Control`: `public, max-age=86400`
+  - `Access-Control-Allow-Origin`: `*`
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "url is required"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Failed to proxy image"
+  }
+  ```
+  </Tab>
+</Tabs>

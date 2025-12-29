@@ -1,0 +1,105 @@
+---
+title: Turkish123 | Media Info
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Media Info
+
+Technical details regarding the usage of the get media info function for the Turkish123 provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/movies/turkish123/info?id={id}
+```
+
+## Query Parameters
+
+| Parameter |  Type  | Description                                                                                                | Required? | Default |
+| :-------: | :----: | ---------------------------------------------------------------------------------------------------------- | :-------: | :-----: |
+|    id     | string | The Turkish123 ID of the drama; i.e. provided by searching for said drama and selecting the correct one. |    Yes    |         |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example ID "erkenci-kus".
+        const url = "https://api.consumet.org/movies/turkish123/info";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { id: "erkenci-kus" } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example ID "erkenci-kus".
+        url = "https://api.consumet.org/movies/turkish123/info"
+        response = requests.get(url, params={"id": "erkenci-kus"})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "id": "string",
+    "title": "string",
+    "url": "string",
+    "image": "string",
+    "description": "string",
+    "type": "string",
+    "releaseDate": "string",
+    "episodes": [
+      {
+        "id": "string",
+        "title": "string",
+        "number": 0,
+        "url": "string"
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "id is required"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Please try again later."
+  }
+  ```
+  </Tab>
+</Tabs>

@@ -1,0 +1,96 @@
+---
+title: mangakakalot | Image Proxy
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Image Proxy
+
+Proxy manga images to bypass CORS and hotlink protection. Use this endpoint to display manga images in your application.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/manga/mangakakalot/proxy?url={imageUrl}
+```
+
+## Query Parameters
+
+| Parameter |  Type  | Description                               | Required? | Default |
+| :-------: | :----: | ----------------------------------------- | :-------: | :-----: |
+|    url    | string | The image URL to proxy                    |    Yes    |         |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python", "HTML"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        const imageUrl = "https://example.com/manga-image.jpg";
+        const proxyUrl = `https://api.consumet.org/manga/mangakakalot/proxy?url=${encodeURIComponent(imageUrl)}`;
+
+        // Use in img tag or fetch as blob
+        const img = document.createElement('img');
+        img.src = proxyUrl;
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+        from urllib.parse import quote
+
+        image_url = "https://example.com/manga-image.jpg"
+        proxy_url = f"https://api.consumet.org/manga/mangakakalot/proxy?url={quote(image_url)}"
+
+        response = requests.get(proxy_url)
+        # response.content contains the image data
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```html
+        <!-- Use directly in img tag -->
+        <img src="https://api.consumet.org/manga/mangakakalot/proxy?url=https%3A%2F%2Fexample.com%2Fmanga-image.jpg" />
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `image/jpeg` or `image/png` or `image/webp`
+  
+  Returns the binary image data with appropriate content-type header.
+  
+  **Headers:**
+  - `Content-Type`: The MIME type of the image
+  - `Cache-Control`: `public, max-age=86400`
+  - `Access-Control-Allow-Origin`: `*`
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "url is required"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Failed to proxy image"
+  }
+  ```
+  </Tab>
+</Tabs>

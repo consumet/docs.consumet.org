@@ -1,7 +1,12 @@
 {
-  "get-trending": "Get Trending",
   "search": "Search",
   "get-movie-info": "Get Movie Info",
+  "get-movie-episode-streaming-links": "Get Movie Episode Streaming Links",
   "get-movie-episode-available-servers": "Get Movie Episode Available Servers",
-  "get-movie-episode-streaming-links": "Get Movie Episode Streaming Links"
+  "spotlight": "Spotlight",
+  "get-trending": "Get Trending",
+  "recent-movies": "Recent Movies",
+  "recent-tv-shows": "Recent TV Shows",
+  "by-country": "Browse by Country",
+  "by-genre": "Browse by Genre"
 }

@@ -1,0 +1,73 @@
+---
+title: comick | Image Proxy
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Image Proxy
+
+Proxy manga images to bypass CORS and hotlink protection. Use this endpoint to display manga images in your application.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/manga/comick/proxy?url={imageUrl}
+```
+
+## Query Parameters
+
+| Parameter |  Type  | Description                               | Required? | Default |
+| :-------: | :----: | ----------------------------------------- | :-------: | :-----: |
+|    url    | string | The image URL to proxy                    |    Yes    |         |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "HTML"]}>
+  <Tab>
+    <>
+        ```js
+        const imageUrl = "https://example.com/manga-image.jpg";
+        const proxyUrl = `https://api.consumet.org/manga/comick/proxy?url=${encodeURIComponent(imageUrl)}`;
+
+        // Use in img tag
+        const img = document.createElement('img');
+        img.src = proxyUrl;
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```html
+        <img src="https://api.consumet.org/manga/comick/proxy?url=https%3A%2F%2Fexample.com%2Fmanga-image.jpg" />
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `image/jpeg` or `image/png` or `image/webp`
+  
+  Returns the binary image data with appropriate content-type header.
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "url is required"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Failed to proxy image"
+  }
+  ```
+  </Tab>
+</Tabs>

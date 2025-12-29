@@ -1,0 +1,175 @@
+---
+title: weebcentral | Image Proxy
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Image Proxy
+
+Technical details regarding the usage of the image proxy function for the weebcentral provider can be found below. This endpoint is used to bypass CORS and hotlink protection when loading manga images. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/manga/weebcentral/proxy?url={url}
+```
+
+## Query Parameters
+
+| Parameter |  Type  | Description                                    | Required? | Default |
+| :-------: | :----: | ---------------------------------------------- | :-------: | :-----: |
+|    url    | string | The image URL to proxy (URL encoded if needed) |    Yes    |         |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using an example image URL from chapter pages.
+        const imageUrl = "https://example.weebcentral.com/images/chapter1/page1.jpg";
+        const proxyUrl = `https://api.consumet.org/manga/weebcentral/proxy?url=${encodeURIComponent(imageUrl)}`;
+
+        // For displaying in HTML
+        const img = document.createElement('img');
+        img.src = proxyUrl;
+        document.body.appendChild(img);
+
+        // Or fetching as blob
+        const fetchImage = async () => {
+            try {
+                const response = await axios.get(proxyUrl, {
+                    responseType: 'blob'
+                });
+                return response.data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+        from urllib.parse import quote
+
+        # Using an example image URL from chapter pages.
+        image_url = "https://example.weebcentral.com/images/chapter1/page1.jpg"
+        proxy_url = f"https://api.consumet.org/manga/weebcentral/proxy?url={quote(image_url, safe='')}"
+
+        # Fetch the image
+        response = requests.get(proxy_url)
+
+        # Save the image
+        if response.status_code == 200:
+            with open("page1.jpg", "wb") as f:
+                f.write(response.content)
+            print("Image saved successfully")
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Usage with Chapter Pages
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // First, get chapter pages
+        const chapterUrl = "https://api.consumet.org/manga/weebcentral/read";
+        const getChapterPages = async () => {
+            try {
+                const { data } = await axios.get(chapterUrl, {
+                    params: { chapterId: "01J76XY2R7G37RRFSQJXM2YHV8/chapter-1" }
+                });
+                
+                // Convert image URLs to use proxy
+                const proxyBaseUrl = "https://api.consumet.org/manga/weebcentral/proxy?url=";
+                const pagesWithProxy = data.map(page => ({
+                    ...page,
+                    img: proxyBaseUrl + encodeURIComponent(page.img)
+                }));
+                
+                return pagesWithProxy;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(await getChapterPages());
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+        from urllib.parse import quote
+
+        # First, get chapter pages
+        chapter_url = "https://api.consumet.org/manga/weebcentral/read"
+        params = {"chapterId": "01J76XY2R7G37RRFSQJXM2YHV8/chapter-1"}
+        response = requests.get(chapter_url, params=params)
+        pages = response.json()
+
+        # Convert image URLs to use proxy
+        proxy_base_url = "https://api.consumet.org/manga/weebcentral/proxy?url="
+        pages_with_proxy = [
+            {**page, "img": proxy_base_url + quote(page["img"], safe="")}
+            for page in pages
+        ]
+
+        print(pages_with_proxy)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `image/*` (e.g., `image/jpeg`, `image/png`, `image/webp`)
+  
+  Returns the raw image binary data with appropriate headers:
+  - `Content-Type`: The original image content type
+  - `Cache-Control`: `public, max-age=86400`
+  - `Access-Control-Allow-Origin`: `*`
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "url is required"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Failed to proxy image"
+  }
+  ```
+  </Tab>
+</Tabs>
+
+## Why Use This Proxy?
+
+Many manga websites implement hotlink protection and CORS policies that prevent images from being loaded directly in web applications. This proxy endpoint:
+
+1. **Bypasses CORS**: Adds appropriate CORS headers to allow cross-origin requests
+2. **Bypasses Hotlink Protection**: Sets the proper `Referer` header expected by the source
+3. **Caching**: Implements caching headers for better performance
+4. **User-Agent Spoofing**: Uses a standard browser User-Agent to avoid blocks

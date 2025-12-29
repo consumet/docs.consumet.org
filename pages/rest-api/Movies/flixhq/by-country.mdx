@@ -1,0 +1,101 @@
+---
+title: Flixhq | Browse by Country
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Browse by Country
+
+Technical details regarding the usage of the browse by country function for the Flixhq provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/movies/flixhq/country/{country}?page={page}
+```
+
+## Path Parameters
+
+| Parameter |  Type  | Description                                                                    | Required? | Default |
+| :-------: | :----: | ------------------------------------------------------------------------------ | :-------: | :-----: |
+|  country  | string | The country to filter by (e.g., united-states, united-kingdom, japan, korean). |    Yes    |  `""`   |
+
+## Query Parameters
+
+| Parameter |  Type   | Description                           | Required? | Default |
+| :-------: | :-----: | ------------------------------------- | :-------: | :-----: |
+|   page    | integer | The page number of results to return. |    No     |   `1`   |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example country "united-states", and looking at the 1st page of results.
+        const url = "https://api.consumet.org/movies/flixhq/country/united-states";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { page: 1 } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example country "united-states", and looking at the 1st page of results.
+        url = "https://api.consumet.org/movies/flixhq/country/united-states"
+        response = requests.get(url, params={"page": 1})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "currentPage": 1,
+    "hasNextPage": true,
+    "results": [
+      {
+        "id": "string",
+        "title": "string",
+        "url": "string",
+        "image": "string",
+        "releaseDate": "string", // or null
+        "duration": "string", // or null
+        "type": "Movie" // or "TV Series"
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong. Please try again later. or contact the developers."
+  }
+  ```
+  </Tab>
+</Tabs>

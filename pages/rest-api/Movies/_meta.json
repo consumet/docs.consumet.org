@@ -6,5 +6,21 @@
   "flixhq": {
     "title": "FlixHQ",
     "theme": { "collapsed": true }
+  },
+  "goku": {
+    "title": "Goku",
+    "theme": { "collapsed": true }
+  },
+  "sflix": {
+    "title": "SFlix",
+    "theme": { "collapsed": true }
+  },
+  "himovies": {
+    "title": "HiMovies",
+    "theme": { "collapsed": true }
+  },
+  "turkish123": {
+    "title": "Turkish123",
+    "theme": { "collapsed": true }
   }
 }
