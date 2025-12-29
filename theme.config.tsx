@@ -64,6 +64,11 @@ const config: DocsThemeConfig = {
       "A collection of documentation for each provider available on Consumet. Find out how to efficiently use the Consumet API here!";
     return (
       <>
+        {/* Load Inter from Google Fonts to ensure consistent rendering */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+        <style>{`html,body{font-family:'Inter',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;}`}</style>
         <meta httpEquiv="Content-Language" content="en" />
         <meta name="description" content={description} />
         <meta name="og:description" content={description} />
