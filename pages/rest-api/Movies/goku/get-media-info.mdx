@@ -1,0 +1,117 @@
+---
+title: Goku | Media Info
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Media Info
+
+Technical details regarding the usage of the get media info function for the Goku provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/movies/goku/info?id={id}
+```
+
+## Query Parameters
+
+| Parameter |  Type  | Description                                                                                             | Required? | Default |
+| :-------: | :----: | ------------------------------------------------------------------------------------------------------- | :-------: | :-----: |
+|    id     | string | The Goku ID of the show / movie; i.e. provided by searching for said show and selecting the correct one. |    Yes    |         |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example id "movie/watch-avengers-endgame-19612"
+        const url = "https://api.consumet.org/movies/goku/info";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { id: "movie/watch-avengers-endgame-19612" } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example id "movie/watch-avengers-endgame-19612"
+        url = "https://api.consumet.org/movies/goku/info"
+        response = requests.get(url, params={"id": "movie/watch-avengers-endgame-19612"})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "400 Bad Request", "404 Not Found"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "id": "string",
+    "title": "string",
+    "url": "string",
+    "image": "string",
+    "releaseDate": "string",
+    "description": "string",
+    "genres": [
+      "string"
+    ],
+    "type": "Movie",
+    "casts": [
+      "string"
+    ],
+    "tags": [
+      "string"
+    ],
+    "production": "string",
+    "duration": "string",
+    "episodes": [
+      {
+        "id": "string",
+        "url": "string",
+        "title": "string",
+        "number": 0,
+        "season": 0
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "id is required"
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Media not found"
+  }
+  ```
+  </Tab>
+</Tabs>

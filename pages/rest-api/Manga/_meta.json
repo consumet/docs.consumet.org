@@ -14,5 +14,21 @@
   "mangareader": {
     "title": "Mangareader",
     "theme": { "collapsed": true }
+  },
+  "mangakakalot": {
+    "title": "Mangakakalot",
+    "theme": { "collapsed": true }
+  },
+  "comick": {
+    "title": "ComicK",
+    "theme": { "collapsed": true }
+  },
+  "asurascans": {
+    "title": "AsuraScans",
+    "theme": { "collapsed": true }
+  },
+  "weebcentral": {
+    "title": "WeebCentral",
+    "theme": { "collapsed": true }
   }
 }

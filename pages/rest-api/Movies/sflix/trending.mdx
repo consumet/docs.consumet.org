@@ -1,0 +1,93 @@
+---
+title: SFlix | Trending
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Trending
+
+Technical details regarding the usage of the get trending function for the SFlix provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/movies/sflix/trending?type={type}
+```
+
+## Query Parameters
+
+| Parameter |           Type            | Description                          | Required? |  Default  |
+| :-------: | :-----------------------: | ------------------------------------ | :-------: | :-------: |
+|   type    | Enum: `"movie"` `"tv-series"` | The type of media to get trending for |    No     | `"movie"` |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Get trending movies
+        const url = "https://api.consumet.org/movies/sflix/trending";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url, { params: { type: "movie" } });
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Get trending movies
+        url = "https://api.consumet.org/movies/sflix/trending"
+        response = requests.get(url, params={"type": "movie"})
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "results": [
+      {
+        "id": "string",
+        "title": "string",
+        "image": "string",
+        "url": "string",
+        "releaseDate": "string",
+        "duration": "string",
+        "type": "Movie"
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "Something went wrong"
+  }
+  ```
+  </Tab>
+</Tabs>

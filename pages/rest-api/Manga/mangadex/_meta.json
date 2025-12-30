@@ -1,5 +1,10 @@
 {
   "search": "Search",
   "get-manga-info": "Get Manga Info",
-  "get-manga-chapter-pages": "Get Manga Chapter Pages"
+  "get-manga-chapter-pages": "Get Manga Chapter Pages",
+  "random": "Random Manga",
+  "recent": "Recently Added",
+  "latest": "Latest Updates",
+  "popular": "Popular",
+  "proxy": "Image Proxy"
 }

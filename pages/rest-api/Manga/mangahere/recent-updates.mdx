@@ -1,0 +1,94 @@
+---
+title: mangahere | Recent Updates
+---
+
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Get Recent Updates
+
+Technical details regarding the usage of the get recent updates function for the mangahere provider can be found below. Example code is provided for both JavaScript and Python, along with a response schema.
+
+## Route Schema (URL)
+
+```
+https://api.consumet.org/manga/mangahere/recent?page={page}
+```
+
+## Query Parameters
+
+| Parameter |  Type  | Description                                                       | Required? | Default |
+| :-------: | :----: | ----------------------------------------------------------------- | :-------: | :-----: |
+|   page    | number | The page number for pagination.                                   |    No     |    1    |
+
+## Request Samples
+
+<Tabs items={["JavaScript", "Python"]}>
+  <Tab>
+    <>
+        ```js
+        import axios from "axios";
+
+        // Using the example page 2.
+        const url = "https://api.consumet.org/manga/mangahere/recent?page=2";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+
+        console.log(data);
+        ```
+    </>
+
+  </Tab>
+  <Tab>
+    <>
+        ```python
+        import requests
+
+        # Using the example page 2.
+        url = "https://api.consumet.org/manga/mangahere/recent?page=2"
+        response = requests.get(url)
+        data = response.json()
+
+        print(data)
+        ```
+    </>
+
+  </Tab>
+</Tabs>
+
+## Response Schema
+
+<Tabs items={["200 OK", "500 Internal Server Error"]}>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "currentPage": 0,
+    "hasNextPage": true,
+    "results": [
+      {
+        "id": "string",
+        "title": "string",
+        "headerForImage": { "Referer": "string" },
+        "image": "string",
+        "chapter": "string",
+        "updatedAt": "string"
+      }
+    ]
+  }
+  ```
+  </Tab>
+  <Tab>
+  **MIME Type:** `application/json`
+  ```json copy=false
+  {
+    "message": "string"
+  }
+  ```
+  </Tab>
+</Tabs>

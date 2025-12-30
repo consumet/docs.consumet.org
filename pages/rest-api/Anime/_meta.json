@@ -7,6 +7,10 @@
     "title": "Animepahe",
     "theme": { "collapsed": true }
   },
+  "animesama": {
+    "title": "AnimeSama",
+    "theme": { "collapsed": true }
+  },
   "animesaturn": {
     "title": "AnimeSaturn",
     "theme": { "collapsed": true }
